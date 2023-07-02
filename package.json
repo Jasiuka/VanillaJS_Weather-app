@@ -1,0 +1,19 @@
+{
+  "name": "vanillajs_weather-app",
+  "version": "1.0.0",
+  "description": "Simple weather web application",
+  "main": "index.html",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jasiuka/VanillaJS_Weather-app.git"
+  },
+  "author": "Lukas J",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jasiuka/VanillaJS_Weather-app/issues"
+  },
+  "homepage": "https://github.com/Jasiuka/VanillaJS_Weather-app#readme"
+}
