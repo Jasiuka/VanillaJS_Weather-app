@@ -8,19 +8,20 @@ import * as elementFunction from "./element-functions.script.js";
 
 // const countriesSelectBox = document.querySelector(".countries");
 // const searchInput = document.querySelector(".searchInput");
-const form = document.querySelector(".searchForm");
+const firstForm = document.querySelector(".firstForm");
 const container = document.querySelector(".data");
+const mainAppWindow = document.querySelector(".main-window");
 
-form.addEventListener("submit", async (e) => {
+firstForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const searchValue = e.target.children[0].value;
-  const submitButton = e.target.children[1];
+  const searchValue = e.target.children[1].value;
+  const submitButton = e.target.children[2];
   const coords = await fetching.getCoordinatesAndLocationName(searchValue);
   elementFunction.createDataElement(
     fetching.getWeatherData(coords),
     fetching.getTimeOfLocation(coords),
     coords,
-    container
+    mainAppWindow
   );
 
   // To prevent non-stop submitting
