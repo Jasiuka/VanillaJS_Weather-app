@@ -4,31 +4,73 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style/style.main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Weathyy</title>
   </head>
   <body>
     <main class="main-window">
-      <form class="firstForm">
-        <h3>Form 1</h3>
-        <input class="searchInput firstForm--searchInput" />
-        <button type="submit">Search</button>
-      </form>
-      <form class="secondForm">
-        <h3>Form 1</h3>
-        <input class="searchInput secondForm--searchInput" />
-        <button type="submit">Search</button>
-      </form>
-      <form class="thirdForm">
-        <h3>Form 1</h3>
-        <input class="searchInput thirdForm--searchInput" />
-        <button type="submit">Search</button>
-      </form>
+      <div class="background">
+        <img src="./assets/main-img.jpg" class="background-img" />
+      </div>
+      <div class="main-window__overlay"></div>
+      <div class="display-info-box">
+        <div class="display-info-box__background">
+          <img
+            src="./assets/main-img.jpg"
+            class="display-info-box__background-img"
+          />
+        </div>
+        <div class="display-info-box__left-panel">
+          <form class="left-panel__search-form">
+            <input type="text" />
+          </form>
+        </div>
+        <div class="display-info-box__right-panel">
+          <h2 class="right-panel__title">No country selected yet</h2>
+          <div class="right-panel__down-box"></div>
+        </div>
+      </div>
+      <!-- <div class="first-location location-box">
+        <h3 class="location-box__title first-location-title">
+          Location name 1
+        </h3>
+        <form class="first-form" data-form-number="1">
+          <input class="search-input first-form__input" />
+          <button type="submit">Search</button>
+        </form>
+        <div class="location-box__data" data-location-number="1"></div>
+      </div>
+      <div class="second-location location-box">
+        <h3 class="location-box__title second-location-title">
+          Location name 2
+        </h3>
+        <form class="second-form" data-form-number="2">
+          <input class="search-input second-form__input" />
+          <button type="submit">Search</button>
+        </form>
+        <div class="location-box__data" data-location-number="2"></div>
+      </div>
+      <div class="third-location location-box">
+        <h3 class="location-box__title third-location-title">
+          Location name 3
+        </h3>
+        <form class="third-form" data-form-number="3">
+          <input class="search-input third-form__input" />
+          <button type="submit">Search</button>
+        </form>
+        <div class="location-box__data" data-location-number="3"></div>
+      </div> -->
     </main>
     <!-- <form class="searchForm">
       <input class="searchInput" type="text" />
       <button type="submit">Search</button>
     </form> -->
-    <div class="data"></div>
+    <!-- <div class="data"></div> -->
     <script src="./scripts/main.script.js" type="module"></script>
   </body>
 </html>

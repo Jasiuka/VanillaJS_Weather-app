@@ -1,0 +1,151 @@
+@import "base";
+@import "location-box";
+@import "data-display";
+
+// .data {
+//   position: relative;
+// }
+
+// .background-video {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   z-index: -999;
+//   opacity: 0.7;
+//   overflow: hidden;
+// }
+
+// .video-content {
+//   height: 100%;
+//   width: 100%;
+//   object-fit: cover;
+// }
+
+.main-window {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  // filter: blur(3px);
+  overflow: hidden;
+  &-img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.main-window__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  // background-color: beige;
+  backdrop-filter: blur(4px);
+}
+
+.display-info-box {
+  position: relative;
+  width: 90vw;
+  height: 90vh;
+  background-color: rgba(176, 176, 176, 0.185);
+  overflow: hidden;
+  border-radius: 4px;
+  display: flex;
+}
+
+.display-info-box__background {
+  position: absolute;
+  top: -5.5vh;
+  left: -4.6vw;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  // overflow: hidden;
+
+  &-img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.display-info-box__left-panel {
+  width: 30%;
+  height: 100%;
+  // background-color: rgba(155, 155, 155, 0.262);
+  backdrop-filter: blur(6px);
+  padding: 2rem 3rem;
+  border-right: solid 1px rgba(165, 165, 165, 0.496);
+  padding-top: 5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  & input {
+    font-size: 1.8rem;
+    background-color: transparent;
+    border: 1px solid #868e96;
+    color: #e9ecef;
+    padding: 0.5rem;
+    border-radius: 4px;
+  }
+
+  & .left-panel__temperature {
+    font-size: 6rem;
+    color: #e9ecef;
+  }
+}
+
+.display-info-box__right-panel {
+  padding: 3rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  min-width: 70%;
+  color: #e9ecef;
+
+  & h2 {
+    font-size: 7rem;
+    font-weight: 200;
+    // color: #e9ecef;
+    letter-spacing: -3px;
+    grid-column: 1 / -1;
+    grid-row: 1 / span 1;
+  }
+
+  & .right-panel__time-date-box {
+    grid-column: 1 / 6;
+    grid-row: 2 / span 1;
+    font-size: 4rem;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  & .right-panel__down-box {
+    // width: 100%;
+    grid-row: 6 / -1;
+    grid-column: 1 / -1;
+    background-color: #868e96;
+  }
+
+  & .right-panel__weather-description {
+    grid-row: 5 / 6;
+    grid-column: 1 / -1;
+    font-size: 7rem;
+  }
+}

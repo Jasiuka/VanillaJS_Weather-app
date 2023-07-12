@@ -30,6 +30,7 @@ export const getTimeOfLocation = async ({ lat, lon }) => {
     `http://api.geonames.org/timezoneJSON?lat=${latitudeValue}&lng=${longitudeValue}&username=jasiuka`
   );
   const jsonData = await responseFromAPI.json();
+
   const timeArray = jsonData.time.split(" ");
   const sunsetArray = jsonData.sunset.split(" ");
   const sunriseArray = jsonData.sunrise.split(" ");
@@ -37,9 +38,11 @@ export const getTimeOfLocation = async ({ lat, lon }) => {
   const locationSunset = sunsetArray[1];
   const locationSunrise = sunriseArray[1];
   const locationTime = timeArray[1];
+  const locationDate = timeArray[0];
 
   return {
     time: locationTime,
+    date: locationDate,
     sunset: locationSunset,
     sunrise: locationSunrise,
   };
@@ -54,6 +57,5 @@ export const getWeatherData = async ({ lat, lon }) => {
     `https://api.open-meteo.com/v1/forecast?latitude=${latitudeValue}&longitude=${longitudeValue}&hourly=temperature_2m,weathercode,is_day&daily=sunrise,sunset&timezone=auto`
   );
   const jsonData = await responseFromAPI.json();
-  console.log("Weather data:", jsonData);
   return jsonData;
 };

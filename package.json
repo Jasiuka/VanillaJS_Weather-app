@@ -4,7 +4,8 @@
   "description": "Simple weather web application",
   "main": "index.html",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "watch:sass": "node-sass --watch source/sass/main.scss source/style/style.main.css"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/Jasiuka/VanillaJS_Weather-app/issues"
   },
-  "homepage": "https://github.com/Jasiuka/VanillaJS_Weather-app#readme"
+  "homepage": "https://github.com/Jasiuka/VanillaJS_Weather-app#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss-cli": "^10.1.0",
+    "node-sass": "^9.0.0"
+  }
 }

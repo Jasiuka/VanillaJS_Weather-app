@@ -4,10 +4,13 @@ export const createDataElement = async (
   weatherDataObject,
   locationTimeObject,
   { location },
-  containerInDocument
+  locationTitleElement,
+  leftPanel,
+  rightPanel
 ) => {
   const weatherData = await weatherDataObject;
   const timeData = await locationTimeObject;
+  // locationToAdd.innerHTML = "";
 
   const {
     hourly: {
@@ -16,10 +19,10 @@ export const createDataElement = async (
       weathercode: weatherCode,
     },
   } = weatherData;
-  const { time: currentTime, sunset, sunrise } = timeData;
+  const { time: currentTime, date, sunset, sunrise } = timeData;
   let hours = currentTime.substring(0, 2);
   hours = hours.startsWith("0") ? hours.substring(1, 2) : hours;
-  console.log(weatherCode[hours]);
+
   const weatherObj = makeWeatherDescriptionAndCreateBackground(
     weatherCode[hours]
   );
@@ -33,90 +36,72 @@ export const createDataElement = async (
     videoAndDesc: weatherObj,
   };
 
-  containerInDocument.appendChild(
-    createBackgroundVideoElement(weatherObj.background)
+  locationTitleElement.textContent = location;
+  const existingTempElement = document.querySelector(
+    ".left-panel__temperature"
   );
-  containerInDocument.appendChild(
-    createMainLocationDataDisplay(location, allDataObject)
-  );
-  // const dataElementHTML = `<div>
-  //   <div class="background-video">
-  //     <video class="video-content" autoplay muted loop>
-  //       <source src=${weatherObj.background} type="video/mp4" />
-  //     </video>
-  //   </div>
-  //     <h2>${location}</h2>
-  //     <p>Current temperature: <span>${currentTemperature[hours]}</span>°C</p>
-  //     <p>Current time: <span>${currentTime}</span></p>
-  //     <p>It is <span>${isDay[hours] === 1 ? "day" : "night"}</span> now</p>
-  //     <p>Sun sets at: ${sunset}</p>
-  //     <p>Sun rises at: ${sunrise}</p>
-  //     <p>Weather description: <span>${weatherObj.description}</span></p>
-  //   </div>`;
+  if (existingTempElement) {
+    existingTempElement.textContent = currentTemperature[hours];
+  } else {
+    leftPanel.appendChild(createTemperatureElement(currentTemperature[hours]));
+  }
 
-  // containerInDocument.innerHTML = dataElementHTML;
+  const existingTimeAndDateElement = document.querySelector(
+    ".right-panel__time-date-box"
+  );
+  if (existingTimeAndDateElement) {
+    document.querySelector(".right-panel__time").textContent = currentTime;
+    document.querySelector(".right-panel__date").textContent = date;
+  } else {
+    rightPanel.appendChild(createTimeAndDateElement(currentTime, date));
+  }
+
+  const exisitingDescriptionElement = document.querySelector(
+    ".right-panel__weather-description"
+  );
+  if (exisitingDescriptionElement) {
+    exisitingDescriptionElement.textContent = weatherObj.description;
+  } else {
+    rightPanel.appendChild(createDescriptionElement(weatherObj.description));
+  }
+  changeBackgroundImage(weatherObj.background);
 };
 
-const createBackgroundVideoElement = (backgroundUrl) => {
-  const existingVideoElement = document.querySelector(".video-content");
-  if (existingVideoElement) {
-    return existingVideoElement.parentNode;
-  }
-  const newDiv = document.createElement("div");
-  newDiv.classList.add("background-video");
-  const newVideoElement = document.createElement("video");
-  newVideoElement.classList.add("video-content");
-  newVideoElement.setAttribute("autoplay", "");
-  newVideoElement.setAttribute("loop", "");
-  newVideoElement.setAttribute("muted", "");
-  const newSourceElement = document.createElement("source");
-  newSourceElement.setAttribute("src", `${backgroundUrl}`);
-  newSourceElement.setAttribute("type", "video/mp4");
-  newVideoElement.appendChild(newSourceElement);
-  newDiv.appendChild(newVideoElement);
-  return newDiv;
+export const createTemperatureElement = (currentTemperature) => {
+  const temperatureElement = document.createElement("p");
+  temperatureElement.classList.add("left-panel__temperature");
+  temperatureElement.textContent = currentTemperature;
+  return temperatureElement;
 };
 
-const createMainLocationDataDisplay = (
-  locationName,
-  {
-    sunset,
-    sunrise,
-    videoAndDesc: { description },
-    currentTemp,
-    currentTime,
-    isDay,
-  }
-) => {
-  const newDiv = document.createElement("div");
-  // Title element
-  const titleElement = document.createElement("h2");
-  titleElement.textContent = locationName;
-  newDiv.appendChild(titleElement);
+export const createTimeAndDateElement = (currentTime, currentDate) => {
+  const divForTimeAndDate = document.createElement("div");
+  divForTimeAndDate.classList.add("right-panel__time-date-box");
+  // Time
+  const timeElement = document.createElement("p");
+  timeElement.classList.add("right-panel__time");
+  timeElement.textContent = currentTime;
+  divForTimeAndDate.appendChild(timeElement);
+  // Date
+  const dateElement = document.createElement("p");
+  dateElement.classList.add("right-panel__date");
+  dateElement.textContent = currentDate;
+  divForTimeAndDate.appendChild(dateElement);
+  return divForTimeAndDate;
+};
 
-  const dataDiv = document.createElement("div");
-  // Current time element
-  const currentTimeElement = document.createElement("p");
-  currentTimeElement.textContent = `Current time: ${currentTime}`;
-  // Current temperature element
-  const currentTemperatureElement = document.createElement("p");
-  currentTemperatureElement.textContent = `Current temperature: ${currentTemp}°C`;
-  // It is day or night element
-  const isDayOrNightElement = document.createElement("p");
-  isDayOrNightElement.textContent = `It is a ${
-    isDay === 1 ? "day" : "night"
-  } now`;
-  // Sunrise / sunset element
-  const sunriseAndSunsetElement = document.createElement("p");
-  sunriseAndSunsetElement.textContent = `Sunrise starts: ${sunrise}, sunset starts: ${sunset}`;
-  // Weather description element
-  const weatherDescriptionElement = document.createElement("p");
-  weatherDescriptionElement.textContent = `Weather description: ${description}`;
-  dataDiv.appendChild(currentTimeElement);
-  dataDiv.appendChild(currentTemperatureElement);
-  dataDiv.appendChild(isDayOrNightElement);
-  dataDiv.appendChild(sunriseAndSunsetElement);
-  dataDiv.appendChild(weatherDescriptionElement);
-  newDiv.appendChild(dataDiv);
-  return newDiv;
+export const createDescriptionElement = (description) => {
+  const newDescriptionElement = document.createElement("p");
+  newDescriptionElement.classList.add("right-panel__weather-description");
+  newDescriptionElement.textContent = description;
+  return newDescriptionElement;
+};
+
+export const changeBackgroundImage = (backgroundUrl) => {
+  const windowBackgroundElement = document.querySelector(".background-img");
+  const displayBoxBackgroundElement = document.querySelector(
+    ".display-info-box__background-img"
+  );
+  windowBackgroundElement.setAttribute("src", backgroundUrl);
+  displayBoxBackgroundElement.setAttribute("src", backgroundUrl);
 };
