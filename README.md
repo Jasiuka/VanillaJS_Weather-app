@@ -20,12 +20,10 @@ There will be 2 simple projects:
 
 Weather application project features:
 
-- 3 locations to view weather (1 main and 2 side)
-- Remove / add locations
-- Select main location
+- Changing units and hours format
 - User can save data to local storage
 - Saved data is loaded whenever user enters web page
-- Background video depending on weather
+- Background image depending on weather
 -
 
 In what technologies I will build these web apps:
