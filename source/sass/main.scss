@@ -144,6 +144,7 @@
     align-items: center;
     gap: 2rem;
     overflow-x: scroll;
+    scroll-behavior: smooth;
   }
 
   & .right-panel__weather-description {
@@ -175,4 +176,8 @@
 
 .weather-icon {
   fill: white;
+}
+
+.highlighted {
+  background-color: #e9ecef48;
 }

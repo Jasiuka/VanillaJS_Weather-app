@@ -130,3 +130,15 @@ export const getHoursFromTimeArray = (timeArray) => {
   });
   return dayHours;
 };
+
+export const scrollToTheCurrentHourAndHighlight = (currentTime, listBox) => {
+  const currentTimeForecastElement = listBox.querySelector(
+    `[data-time="${currentTime}"]`
+  );
+  listBox.scrollLeft =
+    currentTimeForecastElement.offsetLeft -
+    listBox.offsetWidth / 2 +
+    currentTimeForecastElement.offsetWidth / 2;
+
+  currentTimeForecastElement.classList.add("highlighted");
+};

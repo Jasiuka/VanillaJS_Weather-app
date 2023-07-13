@@ -2,6 +2,7 @@ import {
   makeWeatherDescriptionAndBackground,
   getHoursFromTimeArray,
   makeWeatherIcon,
+  scrollToTheCurrentHourAndHighlight,
 } from "./helper-functions.script.js";
 
 export const createDataElement = async (
@@ -15,7 +16,6 @@ export const createDataElement = async (
 ) => {
   const weatherData = await weatherDataObject;
   const timeData = await locationTimeObject;
-  // locationToAdd.innerHTML = "";
 
   const {
     hourly: {
@@ -26,36 +26,36 @@ export const createDataElement = async (
     },
   } = weatherData;
   const { time: currentTime, date, sunset, sunrise } = timeData;
-  let hours = currentTime.substring(0, 2);
-  hours = hours.startsWith("0") ? hours.substring(1, 2) : hours;
+  let currentHour = currentTime.substring(0, 2);
+  currentHour = currentHour.startsWith("0")
+    ? currentHour.substring(1, 2)
+    : currentHour;
 
-  const weatherObj = makeWeatherDescriptionAndBackground(weatherCode[hours]);
+  const weatherObj = makeWeatherDescriptionAndBackground(
+    weatherCode[currentHour]
+  );
   const todayWeatherData = {
     temperatureArray: currentTemperature.slice(0, 24),
     weatherCodeArray: weatherCode.slice(0, 24),
     dayTimeArray: timeArray.slice(0, 24),
   };
 
-  // const dayHours = getHoursFromTimeArray(todayWeatherData.dayTimeArray);
-  // console.log(dayHours);
-  // const allDataObject = {
-  //   currentTemp: currentTemperature[hours],
-  //   currentTime: currentTime,
-  //   sunset: sunset,
-  //   sunrise: sunrise,
-  //   isDay: isDay[hours],
-  //   videoAndDesc: weatherObj,
-  // };
-
+  // Change location text
   locationTitleElement.textContent = location;
+
+  // Check if temp element exist, if exist change it's text, if not, create new element.
   const existingTempElement = document.querySelector(
     ".left-panel__temperature"
   );
   if (existingTempElement) {
-    existingTempElement.textContent = currentTemperature[hours];
+    existingTempElement.textContent = currentTemperature[currentHour];
   } else {
-    leftPanel.appendChild(createTemperatureElement(currentTemperature[hours]));
+    leftPanel.appendChild(
+      createTemperatureElement(currentTemperature[currentHour])
+    );
   }
+
+  // Check if date and time element exist, if exist change it's text, if not, create new element.
 
   const existingTimeAndDateElement = document.querySelector(
     ".right-panel__time-date-box"
@@ -67,6 +67,8 @@ export const createDataElement = async (
     rightPanel.appendChild(createTimeAndDateElement(currentTime, date));
   }
 
+  // Check if description element exist, if exist change it's text, if not, create new element.
+
   const exisitingDescriptionElement = document.querySelector(
     ".right-panel__weather-description"
   );
@@ -75,8 +77,17 @@ export const createDataElement = async (
   } else {
     rightPanel.appendChild(createDescriptionElement(weatherObj.description));
   }
+
+  // Change background image
   changeBackgroundImage(weatherObj.background);
+  // Create hourly forecast list items and add them to the list
   createHourlyForecastListElements(todayWeatherData, listBoxElement);
+
+  // Scroll to the current hour forecast element and highlight it
+  scrollToTheCurrentHourAndHighlight(
+    timeArray[currentHour].split("T")[1],
+    listBoxElement
+  );
 };
 
 export const createTemperatureElement = (currentTemperature) => {
@@ -137,6 +148,7 @@ const createHourlyForecastListElements = (
   for (let i = 0; i < temperatureArray.length; i++) {
     const newWeatherListItem = document.createElement("li");
     newWeatherListItem.classList.add("right-panel__down-list--list-item");
+    newWeatherListItem.dataset.time = dayHours[i];
     const hoursElement = document.createElement("p");
     hoursElement.textContent = dayHours[i];
     const iconElement = document.createElement("figure");
