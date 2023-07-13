@@ -1,4 +1,8 @@
-import { makeWeatherDescriptionAndCreateBackground } from "./helper-functions.script.js";
+import {
+  makeWeatherDescriptionAndBackground,
+  getHoursFromTimeArray,
+  makeWeatherIcon,
+} from "./helper-functions.script.js";
 
 export const createDataElement = async (
   weatherDataObject,
@@ -6,7 +10,8 @@ export const createDataElement = async (
   { location },
   locationTitleElement,
   leftPanel,
-  rightPanel
+  rightPanel,
+  listBoxElement
 ) => {
   const weatherData = await weatherDataObject;
   const timeData = await locationTimeObject;
@@ -16,6 +21,7 @@ export const createDataElement = async (
     hourly: {
       is_day: isDay,
       temperature_2m: currentTemperature,
+      time: timeArray,
       weathercode: weatherCode,
     },
   } = weatherData;
@@ -23,18 +29,23 @@ export const createDataElement = async (
   let hours = currentTime.substring(0, 2);
   hours = hours.startsWith("0") ? hours.substring(1, 2) : hours;
 
-  const weatherObj = makeWeatherDescriptionAndCreateBackground(
-    weatherCode[hours]
-  );
-
-  const allDataObject = {
-    currentTemp: currentTemperature[hours],
-    currentTime: currentTime,
-    sunset: sunset,
-    sunrise: sunrise,
-    isDay: isDay[hours],
-    videoAndDesc: weatherObj,
+  const weatherObj = makeWeatherDescriptionAndBackground(weatherCode[hours]);
+  const todayWeatherData = {
+    temperatureArray: currentTemperature.slice(0, 24),
+    weatherCodeArray: weatherCode.slice(0, 24),
+    dayTimeArray: timeArray.slice(0, 24),
   };
+
+  // const dayHours = getHoursFromTimeArray(todayWeatherData.dayTimeArray);
+  // console.log(dayHours);
+  // const allDataObject = {
+  //   currentTemp: currentTemperature[hours],
+  //   currentTime: currentTime,
+  //   sunset: sunset,
+  //   sunrise: sunrise,
+  //   isDay: isDay[hours],
+  //   videoAndDesc: weatherObj,
+  // };
 
   locationTitleElement.textContent = location;
   const existingTempElement = document.querySelector(
@@ -65,6 +76,7 @@ export const createDataElement = async (
     rightPanel.appendChild(createDescriptionElement(weatherObj.description));
   }
   changeBackgroundImage(weatherObj.background);
+  createHourlyForecastListElements(todayWeatherData, listBoxElement);
 };
 
 export const createTemperatureElement = (currentTemperature) => {
@@ -104,4 +116,36 @@ export const changeBackgroundImage = (backgroundUrl) => {
   );
   windowBackgroundElement.setAttribute("src", backgroundUrl);
   displayBoxBackgroundElement.setAttribute("src", backgroundUrl);
+};
+
+const createHourlyForecastListElements = (
+  { temperatureArray, weatherCodeArray, dayTimeArray },
+  listBoxElement
+) => {
+  listBoxElement.innerHTML = "";
+  if (!temperatureArray || !weatherCodeArray || !dayTimeArray) {
+    return;
+  }
+  if (
+    temperatureArray.length !== 24 ||
+    weatherCodeArray.length !== 24 ||
+    dayTimeArray.length !== 24
+  ) {
+    return;
+  }
+  const dayHours = getHoursFromTimeArray(dayTimeArray);
+  for (let i = 0; i < temperatureArray.length; i++) {
+    const newWeatherListItem = document.createElement("li");
+    newWeatherListItem.classList.add("right-panel__down-list--list-item");
+    const hoursElement = document.createElement("p");
+    hoursElement.textContent = dayHours[i];
+    const iconElement = document.createElement("figure");
+    iconElement.innerHTML = makeWeatherIcon(weatherCodeArray[i]);
+    const temperatureElement = document.createElement("p");
+    temperatureElement.textContent = temperatureArray[i];
+    newWeatherListItem.appendChild(hoursElement);
+    newWeatherListItem.appendChild(iconElement);
+    newWeatherListItem.appendChild(temperatureElement);
+    listBoxElement.appendChild(newWeatherListItem);
+  }
 };

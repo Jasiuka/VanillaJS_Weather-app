@@ -141,11 +141,36 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center; }
-  .display-info-box__right-panel .right-panel__down-box {
+  .display-info-box__right-panel .right-panel__down-list {
     grid-row: 6 / -1;
     grid-column: 1 / -1;
-    background-color: #868e96; }
+    border-top: solid 1px grey;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    overflow-x: scroll; }
   .display-info-box__right-panel .right-panel__weather-description {
     grid-row: 5 / 6;
     grid-column: 1 / -1;
     font-size: 7rem; }
+
+.weather-icon {
+  width: 4rem;
+  height: 4rem; }
+
+.right-panel__down-list--list-item {
+  background-color: transparent;
+  padding: 1rem;
+  font-size: 2rem;
+  min-width: 8rem;
+  max-width: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(6px);
+  border-radius: 3px;
+  border: 1px solid grey; }
+
+.weather-icon {
+  fill: white; }

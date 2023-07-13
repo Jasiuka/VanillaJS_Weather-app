@@ -57,5 +57,6 @@ export const getWeatherData = async ({ lat, lon }) => {
     `https://api.open-meteo.com/v1/forecast?latitude=${latitudeValue}&longitude=${longitudeValue}&hourly=temperature_2m,weathercode,is_day&daily=sunrise,sunset&timezone=auto`
   );
   const jsonData = await responseFromAPI.json();
+  console.log(jsonData);
   return jsonData;
 };

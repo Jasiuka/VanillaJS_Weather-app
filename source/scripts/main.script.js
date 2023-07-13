@@ -6,13 +6,11 @@ import * as elementFunction from "./element-functions.script.js";
 // http://api.geonames.org/ // 1000 - h // 20000 - day
 // https://api.open-meteo.com/ // 10000 - day
 
-// const countriesSelectBox = document.querySelector(".countries");
-// const searchInput = document.querySelector(".searchInput");
 const firstForm = document.querySelector(".left-panel__search-form");
 const titleElement = document.querySelector(".right-panel__title");
 const leftPanel = document.querySelector(".display-info-box__left-panel");
 const rightPanel = document.querySelector(".display-info-box__right-panel");
-// const container = document.querySelector(".data");
+const listBox = document.querySelector(".right-panel__down-list");
 const mainAppWindow = document.querySelector(".main-window");
 
 firstForm.addEventListener("submit", async (e) => {
@@ -28,27 +26,9 @@ firstForm.addEventListener("submit", async (e) => {
     coords,
     titleElement,
     leftPanel,
-    rightPanel
+    rightPanel,
+    listBox
   );
-  // console.log(searchInput.value);
-  // const titleElement = document.querySelector(".first-location-title");
-
-  // const displayBoxNumber = firstForm.dataset.formNumber;
-  // const searchValue = searchInput.value;
-  // const locationToAdd = document.querySelector(
-  //   `[data-location-number='${displayBoxNumber}']`
-  // );
-  // const coords = await fetching.getCoordinatesAndLocationName(searchValue);
-  // elementFunction.createDataElement(
-  //   fetching.getWeatherData(coords),
-  //   fetching.getTimeOfLocation(coords),
-  //   coords,
-  //   mainAppWindow,
-  //   locationToAdd,
-  //   titleElement
-  // );
-  // e.target.children[0].value = "";
-  // firstForm.classList.add("hide-form");
 
   // To prevent non-stop submitting
   searchInput.value = "";
