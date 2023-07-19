@@ -109,16 +109,25 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column; }
-  .display-info-box__left-panel input {
+  .display-info-box__left-panel .search-input {
     font-size: 1.8rem;
     background-color: transparent;
     border: 1px solid #868e96;
     color: #e9ecef;
     padding: 0.5rem;
     border-radius: 4px; }
+  .display-info-box__left-panel form {
+    order: 1; }
   .display-info-box__left-panel .left-panel__temperature {
+    order: 2;
     font-size: 6rem;
     color: #e9ecef; }
+  .display-info-box__left-panel--settings {
+    width: 100%;
+    order: 3;
+    margin-top: auto;
+    border-top: 1px solid grey;
+    padding-top: 1rem; }
 
 .display-info-box__right-panel {
   padding: 3rem 4rem;
@@ -132,15 +141,19 @@ body {
     font-weight: 200;
     letter-spacing: -3px;
     grid-column: 1 / -1;
-    grid-row: 1 / span 1; }
+    grid-row: 1 / span 1;
+    display: flex;
+    gap: 2.3rem;
+    align-items: center; }
+    .display-info-box__right-panel h2 .right-panel__title-icon {
+      justify-self: flex-start; }
   .display-info-box__right-panel .right-panel__time-date-box {
     grid-column: 1 / 6;
     grid-row: 2 / span 1;
     font-size: 4rem;
     font-weight: 400;
     display: flex;
-    justify-content: space-between;
-    align-items: center; }
+    flex-direction: column; }
   .display-info-box__right-panel .right-panel__down-list {
     grid-row: 6 / -1;
     grid-column: 1 / -1;
@@ -159,12 +172,17 @@ body {
   width: 4rem;
   height: 4rem; }
 
+.icon {
+  width: 4rem;
+  height: 4rem;
+  fill: white; }
+
 .right-panel__down-list--list-item {
   background-color: transparent;
   padding: 1rem;
   font-size: 2rem;
-  min-width: 8rem;
-  max-width: 8rem;
+  min-width: 12rem;
+  max-width: 12rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -178,3 +196,15 @@ body {
 
 .highlighted {
   background-color: #e9ecef48; }
+
+.title-icon {
+  width: 4.6rem;
+  height: 4.6rem;
+  fill: white; }
+
+.right-panel__time, .right-panel__date {
+  display: flex;
+  gap: 3.5rem; }
+  .right-panel__time span, .right-panel__date span {
+    display: flex;
+    align-items: center; }

@@ -94,7 +94,7 @@
   align-items: center;
   flex-direction: column;
 
-  & input {
+  & .search-input {
     font-size: 1.8rem;
     background-color: transparent;
     border: 1px solid #868e96;
@@ -103,9 +103,22 @@
     border-radius: 4px;
   }
 
+  & form {
+    order: 1;
+  }
+
   & .left-panel__temperature {
+    order: 2;
     font-size: 6rem;
     color: #e9ecef;
+  }
+
+  &--settings {
+    width: 100%;
+    order: 3;
+    margin-top: auto;
+    border-top: 1px solid grey;
+    padding-top: 1rem;
   }
 }
 
@@ -124,6 +137,13 @@
     letter-spacing: -3px;
     grid-column: 1 / -1;
     grid-row: 1 / span 1;
+    display: flex;
+    gap: 2.3rem;
+    align-items: center;
+
+    & .right-panel__title-icon {
+      justify-self: flex-start;
+    }
   }
 
   & .right-panel__time-date-box {
@@ -132,8 +152,9 @@
     font-size: 4rem;
     font-weight: 400;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    // justify-content: space-between;
+    // align-items: center;
   }
 
   & .right-panel__down-list {
@@ -159,12 +180,18 @@
   height: 4rem;
 }
 
+.icon {
+  width: 4rem;
+  height: 4rem;
+  fill: white;
+}
+
 .right-panel__down-list--list-item {
   background-color: transparent;
   padding: 1rem;
   font-size: 2rem;
-  min-width: 8rem;
-  max-width: 8rem;
+  min-width: 12rem;
+  max-width: 12rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -180,4 +207,23 @@
 
 .highlighted {
   background-color: #e9ecef48;
+}
+
+.title-icon {
+  width: 4.6rem;
+  height: 4.6rem;
+  fill: white;
+}
+
+.right-panel {
+  &__time,
+  &__date {
+    display: flex;
+    gap: 3.5rem;
+
+    span {
+      display: flex;
+      align-items: center;
+    }
+  }
 }

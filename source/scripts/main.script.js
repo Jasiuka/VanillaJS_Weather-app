@@ -7,11 +7,14 @@ import * as elementFunction from "./element-functions.script.js";
 // https://api.open-meteo.com/ // 10000 - day
 
 const firstForm = document.querySelector(".left-panel__search-form");
-const titleElement = document.querySelector(".right-panel__title");
+const titleElement = document.querySelector(".right-panel__title-text");
 const leftPanel = document.querySelector(".display-info-box__left-panel");
 const rightPanel = document.querySelector(".display-info-box__right-panel");
 const listBox = document.querySelector(".right-panel__down-list");
-const mainAppWindow = document.querySelector(".main-window");
+
+// Defaults
+let temperatureUnit = "celsius";
+let hoursFormat = "h24";
 
 firstForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -36,4 +39,68 @@ firstForm.addEventListener("submit", async (e) => {
   setTimeout(function () {
     searchInput.disabled = false;
   }, 1000);
+});
+
+leftPanel.addEventListener("click", (e) => {
+  const target = e.target;
+  if (target.name === "hour-format") {
+    const timeElement = document.querySelector(".right-panel__time-text");
+    const existingTime = timeElement.textContent;
+    const hourlyForecastTimeElements =
+      document.querySelectorAll(".list-item__time");
+    if (target.value === "am/pm") {
+      timeElement.textContent = helper.convertToAmPm(existingTime);
+      hourlyForecastTimeElements.forEach((element) => {
+        const existingTime = element.textContent;
+        element.textContent = helper.convertToAmPm(existingTime);
+      });
+      hoursFormat = "am/pm";
+    }
+    if (target.value === "h24") {
+      timeElement.textContent = helper.convertTo24HourFormat(existingTime);
+      hourlyForecastTimeElements.forEach((element) => {
+        const existingTime = element.textContent;
+        element.textContent = helper.convertTo24HourFormat(existingTime);
+      });
+      hoursFormat = "h24";
+    }
+  }
+  if (target.name === "temp") {
+    const tempElementText = document.querySelector(
+      ".left-panel__temperature-text"
+    );
+    const tempElementIcon = document.querySelector(
+      ".left-panel__temperature-icon"
+    );
+    const hourlyForecastTempElements =
+      document.querySelectorAll(".list-item__temp");
+    const existingTemp = tempElementText.textContent;
+    if (target.value === "fahrenheit") {
+      tempElementText.textContent = helper.convertToFahrenheit(existingTemp);
+      tempElementIcon.textContent = "°F";
+      hourlyForecastTempElements.forEach((element) => {
+        const hourlyTemp = element.textContent;
+        element.textContent = helper.convertToFahrenheit(hourlyTemp);
+      });
+      temperatureUnit = "fahrenheit";
+    }
+    if (target.value === "celsius") {
+      const tempElementText = document.querySelector(
+        ".left-panel__temperature-text"
+      );
+      const tempElementIcon = document.querySelector(
+        ".left-panel__temperature-icon"
+      );
+      const hourlyForecastTempElements =
+        document.querySelectorAll(".list-item__temp");
+      const existingTemp = tempElementText.textContent;
+      tempElementText.textContent = helper.convertToCelsius(existingTemp);
+      tempElementIcon.textContent = "°C";
+      hourlyForecastTempElements.forEach((element) => {
+        const hourlyTemp = element.textContent;
+        element.textContent = helper.convertToCelsius(hourlyTemp);
+      });
+      temperatureUnit = "celsius";
+    }
+  }
 });

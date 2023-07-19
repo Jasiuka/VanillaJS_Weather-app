@@ -23,7 +23,7 @@ Weather application project features:
 - Changing units and hours format
 - User can save data to local storage
 - Saved data is loaded whenever user enters web page
-- Background image depending on weather
+- Background image depending on location weather
 -
 
 In what technologies I will build these web apps:

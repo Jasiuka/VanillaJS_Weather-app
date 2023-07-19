@@ -142,3 +142,45 @@ export const scrollToTheCurrentHourAndHighlight = (currentTime, listBox) => {
 
   currentTimeForecastElement.classList.add("highlighted");
 };
+
+export const convertToAmPm = (h24FormatTime) => {
+  const [hours, minutes] = h24FormatTime.split(":");
+  const amOrPm = parseInt(hours) >= 12 ? "PM" : "AM";
+  if (hours === "00") {
+    return `12:${minutes} ${amOrPm}`;
+  }
+  if (hours === "12" && amOrPm === "AM") {
+    return `1:${minutes} ${amOrPm}`;
+  }
+  if (hours === "12" && amOrPm === "PM") {
+    return `12:${minutes} ${amOrPm}`;
+  }
+  const amPmHours = (parseInt(hours) % 12).toString();
+  return `${amPmHours}:${minutes} ${amOrPm}`;
+};
+
+export const convertTo24HourFormat = (amPmFormatTime) => {
+  const [time, amOrPm] = amPmFormatTime.split(" ");
+  const [hours, minutes] = time.split(":");
+  if (amOrPm === "AM") {
+    if (hours === "12") {
+      return `00:${minutes}`;
+    }
+    const convertedHours = hours < 10 ? `0${hours}` : hours;
+    return `${convertedHours}:${minutes}`;
+  }
+  if (amOrPm === "PM") {
+    if (hours === "12") {
+      return `12:${minutes}`;
+    }
+    return `${(parseInt(hours) + 12).toString()}:${minutes}`;
+  }
+};
+
+export const convertToFahrenheit = (cesliusTemp) => {
+  return Math.round(parseFloat(cesliusTemp) * 1.8 + 32).toString();
+};
+
+export const convertToCelsius = (fahrenheitTemp) => {
+  return Math.round(parseFloat((fahrenheitTemp - 32) / 1.8));
+};
