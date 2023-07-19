@@ -124,10 +124,22 @@ body {
     color: #e9ecef; }
   .display-info-box__left-panel--settings {
     width: 100%;
-    order: 3;
+    order: 4;
     margin-top: auto;
     border-top: 1px solid grey;
     padding-top: 1rem; }
+  .display-info-box__left-panel--forecasts {
+    order: 3;
+    display: flex;
+    gap: 2rem; }
+    .display-info-box__left-panel--forecasts input {
+      display: none; }
+    .display-info-box__left-panel--forecasts label {
+      font-size: 1.6rem;
+      color: #e9ecef;
+      background-color: #e2b9b9;
+      border-radius: 4px;
+      padding: 0.5rem; }
 
 .display-info-box__right-panel {
   padding: 3rem 4rem;

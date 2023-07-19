@@ -54,7 +54,7 @@ export const getWeatherData = async ({ lat, lon }) => {
   const latitudeValue = lattitude.toFixed(2);
   const longitudeValue = longtitude.toFixed(2);
   const responseFromAPI = await fetch(
-    `https://api.open-meteo.com/v1/forecast?latitude=${latitudeValue}&longitude=${longitudeValue}&hourly=temperature_2m,weathercode,is_day&daily=sunrise,sunset&timezone=auto`
+    `https://api.open-meteo.com/v1/forecast?latitude=${latitudeValue}&longitude=${longitudeValue}&hourly=temperature_2m,weathercode,is_day&daily=sunrise,sunset&timezone=auto&forecast_days=14`
   );
   const jsonData = await responseFromAPI.json();
   console.log(jsonData);

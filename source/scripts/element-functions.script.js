@@ -3,6 +3,7 @@ import {
   getHoursFromTimeArray,
   makeWeatherIcon,
   scrollToTheCurrentHourAndHighlight,
+  make14DaysForecastObject,
 } from "./helper-functions.script.js";
 
 export const createDataElement = async (
@@ -17,9 +18,10 @@ export const createDataElement = async (
   const weatherData = await weatherDataObject;
   const timeData = await locationTimeObject;
 
+  make14DaysForecastObject(weatherData);
+
   const {
     hourly: {
-      is_day: isDay,
       temperature_2m: currentTemperature,
       time: timeArray,
       weathercode: weatherCode,
@@ -190,3 +192,5 @@ const createHourlyForecastListElements = (
     listBoxElement.appendChild(newWeatherListItem);
   }
 };
+
+export const createMultipleDaysForecastElements = (days14ForecastObject) => {};

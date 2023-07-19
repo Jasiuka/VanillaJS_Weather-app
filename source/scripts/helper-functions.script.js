@@ -184,3 +184,29 @@ export const convertToFahrenheit = (cesliusTemp) => {
 export const convertToCelsius = (fahrenheitTemp) => {
   return Math.round(parseFloat((fahrenheitTemp - 32) / 1.8));
 };
+
+export const make14DaysForecastObject = ({ daily, hourly }) => {
+  const weatherDataArray = [];
+  let howManyDaysForecast = 0;
+  for (let i = 11; i < hourly.temperature_2m.length; i += 24) {
+    if (hourly.temperature_2m[i] !== null || hourly.weathercode[i] !== null) {
+      const newObject = {
+        midDayTemp: hourly.temperature_2m[i],
+        midDayWeatherDescription: makeWeatherDescriptionAndBackground(
+          hourly.weathercode[i]
+        ),
+        midDayWeatherIcon: makeWeatherIcon(hourly.weathercode[i]),
+      };
+      weatherDataArray.push(newObject);
+      // midDayTemperaturesFor14Days.push(hourly.temperature_2m[i]);
+      // midDayWeatherCodeFor14Days.push(hourly.weathercode[i]);
+      howManyDaysForecast++;
+    }
+  }
+  const forecastObject = {};
+  const timeArray = daily.time;
+  for (let i = 0; i < timeArray.length; i++) {
+    forecastObject[timeArray[i]] = weatherDataArray[i];
+  }
+  console.log(forecastObject);
+};
