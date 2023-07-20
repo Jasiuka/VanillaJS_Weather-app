@@ -81,7 +81,7 @@ body {
 
 .display-info-box {
   position: relative;
-  height: 30vh;
+  height: 50vh;
   background-color: rgba(176, 176, 176, 0.185);
   overflow: hidden;
   border-radius: 4px;
@@ -136,6 +136,16 @@ body {
     margin-top: auto;
     border-top: 1px solid #e9ecef;
     padding-top: 1rem; }
+    .display-info-box__left-panel--settings .settings-label {
+      display: inline-block;
+      background-color: #d6dadd;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      border: 2px solid #d6dadd;
+      transition: all 0.3s; }
+    .display-info-box__left-panel--settings input {
+      display: none; }
   .display-info-box__left-panel--forecasts {
     order: 3;
     display: flex;
@@ -280,3 +290,34 @@ body {
 
 .move-label {
   transform: translate(-10px, -35px); }
+
+.left-panel--settings__hour-format,
+.left-panel--settings__temp {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; }
+  .left-panel--settings__hour-format p,
+  .left-panel--settings__temp p {
+    font-size: 1.6rem;
+    color: #e9ecef; }
+  .left-panel--settings__hour-format div,
+  .left-panel--settings__temp div {
+    display: flex;
+    align-items: center;
+    gap: 1rem; }
+    .left-panel--settings__hour-format div .label,
+    .left-panel--settings__temp div .label {
+      color: #e9ecef;
+      font-weight: 500; }
+
+#h24:checked + .settings-label {
+  background-color: #5a9ada; }
+
+#ampm:checked + .settings-label {
+  background-color: #5a9ada; }
+
+#fahrenheit:checked + .settings-label {
+  background-color: #5a9ada; }
+
+#celsius:checked + .settings-label {
+  background-color: #5a9ada; }

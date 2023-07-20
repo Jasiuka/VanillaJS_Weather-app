@@ -36,22 +36,52 @@
           <div class="display-info-box__left-panel--settings">
             <div class="left-panel--settings__hour-format">
               <p>Hour format</p>
-              <input type="radio" name="hour-format" id="h24" value="h24" />
-              <label class="settings-label" for="h24">24 hour format</label>
-              <label class="settings-label" for="am/pm">AM/PM format</label>
-              <input type="radio" name="hour-format" id="am/pm" value="am/pm" />
+              <div class="hour-format-box">
+                <input
+                  type="radio"
+                  name="hour-format"
+                  id="h24"
+                  value="h24"
+                  checked
+                />
+                <label class="settings-label" for="h24"></label>
+                <label class="label">24 Hour format</label>
+              </div>
+              <div class="hour-format-box">
+                <input
+                  type="radio"
+                  name="hour-format"
+                  id="ampm"
+                  value="am/pm"
+                />
+                <label class="settings-label" for="ampm"></label>
+                <label class="label">AM/PM Format</label>
+              </div>
             </div>
+            <br />
             <div class="left-panel--settings__temp">
-              <p>Temp format</p>
-              <label class="settings-label" for="celsius">Celsius</label>
-              <input type="radio" name="temp" id="celsius" value="celsius" />
-              <label class="settings-label" for="fahrenheit">Fahrenheit</label>
-              <input
-                type="radio"
-                name="temp"
-                id="fahrenheit"
-                value="fahrenheit"
-              />
+              <p>Temperature units</p>
+              <div class="temp-unit-box">
+                <input
+                  type="radio"
+                  name="temp"
+                  id="celsius"
+                  value="celsius"
+                  checked
+                />
+                <label class="settings-label" for="celsius"></label>
+                <label class="label">Celsius</label>
+              </div>
+              <div class="temp-unit-box">
+                <input
+                  type="radio"
+                  name="temp"
+                  id="fahrenheit"
+                  value="fahrenheit"
+                />
+                <label class="settings-label" for="fahrenheit"></label>
+                <label class="label">Fahrenheits</label>
+              </div>
             </div>
           </div>
         </div>

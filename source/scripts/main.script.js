@@ -17,6 +17,9 @@ const multipleDaysForecastBox = document.querySelector(
 );
 const citySearchInput = document.querySelector(".search-input");
 const citySearchInputLabel = document.querySelector(".search-input-label");
+const settingsBox = document.querySelector(
+  ".display-info-box__left-panel--settings"
+);
 
 // Defaults
 let temperatureUnit = "celsius";
@@ -41,7 +44,7 @@ firstForm.addEventListener("submit", async (e) => {
     multipleDaysForecastBox
   );
 
-  helper.changeBoxStyles(mainDisplayWindow, leftPanel, rightPanel);
+  helper.changeBoxStyles(mainDisplayWindow, leftPanel, rightPanel, settingsBox);
   // To prevent non-stop submitting
   searchInput.value = "";
   searchInput.disabled = true;

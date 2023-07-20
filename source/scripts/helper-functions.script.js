@@ -211,7 +211,12 @@ export const make14DaysForecastObject = ({ daily, hourly }) => {
   return forecastObject;
 };
 
-export const changeBoxStyles = (mainWindow, leftPanel, rightPanel) => {
+export const changeBoxStyles = (
+  mainWindow,
+  leftPanel,
+  rightPanel,
+  settingsBox
+) => {
   mainWindow.style.width = "90vw";
   mainWindow.style.height = "90vh";
 
@@ -223,4 +228,10 @@ export const changeBoxStyles = (mainWindow, leftPanel, rightPanel) => {
   rightPanel.style.maxWidth = "70%";
   rightPanel.style.overflow = "auto";
   rightPanel.style.visibility = "visible";
+
+  settingsBox.style.justifyContent = "space-around";
+  settingsBox.style.display = "flex";
+
+  // display: flex;
+  // justify-content: space-around;
 };
