@@ -13,12 +13,16 @@ export const createDataElement = async (
   locationTitleElement,
   leftPanel,
   rightPanel,
-  listBoxElement
+  listBoxElement,
+  multipleForecastsBox
 ) => {
   const weatherData = await weatherDataObject;
   const timeData = await locationTimeObject;
 
-  make14DaysForecastObject(weatherData);
+  createMultipleDaysForecastElements(
+    make14DaysForecastObject(weatherData),
+    multipleForecastsBox
+  );
 
   const {
     hourly: {
@@ -83,6 +87,7 @@ export const createDataElement = async (
   // Change background image
   changeBackgroundImage(weatherObj.background);
   // Create hourly forecast list items and add them to the list
+  listBoxElement.style.overflowX = "scroll";
   createHourlyForecastListElements(todayWeatherData, listBoxElement);
 
   // Scroll to the current hour forecast element and highlight it
@@ -193,4 +198,63 @@ const createHourlyForecastListElements = (
   }
 };
 
-export const createMultipleDaysForecastElements = (days14ForecastObject) => {};
+export const createMultipleDaysForecastElements = (
+  objectOf14DaysForecast,
+  boxToAppend
+) => {
+  boxToAppend.innerHTML = "";
+  const title = document.createElement("h3");
+  title.textContent = "Next 14 days forecast";
+  boxToAppend.appendChild(title);
+
+  const newForecastsDiv = document.createElement("div");
+  newForecastsDiv.classList.add("display-info-box__left-panel--forecasts-list");
+
+  Object.entries(objectOf14DaysForecast).forEach(([key, value]) => {
+    // Data variables
+    const temperature = value.midDayTemp;
+    const description = value.midDayWeatherDescription.description;
+    const icon = value.midDayWeatherIcon;
+    const date = key;
+    const dateObject = new Date(date);
+    const dayName = dateObject.toLocaleString("en-US", { weekday: "long" });
+    newForecastsDiv.appendChild(
+      createMultipleForecastsElement(
+        temperature,
+        description,
+        icon,
+        date,
+        dayName
+      )
+    );
+  });
+  boxToAppend.appendChild(newForecastsDiv);
+};
+
+export const createMultipleForecastsElement = (
+  temp,
+  desc,
+  iconHTML,
+  date,
+  dayName
+) => {
+  const newForecastElement = document.createElement("div");
+  newForecastElement.classList.add(
+    "display-info-box__left-panel--forecasts-item"
+  );
+  const newForecastElementTemperature = document.createElement("p");
+  newForecastElementTemperature.textContent = temp;
+  const newForecastElementIcon = document.createElement("figure");
+  newForecastElementIcon.innerHTML = iconHTML;
+  const newForecastElementDate = document.createElement("p");
+  newForecastElementDate.textContent = date;
+  const newForecastElementDayName = document.createElement("p");
+  newForecastElementDayName.classList.add("day-name");
+  newForecastElementDayName.textContent = dayName;
+
+  newForecastElement.appendChild(newForecastElementTemperature);
+  newForecastElement.appendChild(newForecastElementIcon);
+  newForecastElement.appendChild(newForecastElementDayName);
+  newForecastElement.appendChild(newForecastElementDate);
+  return newForecastElement;
+};

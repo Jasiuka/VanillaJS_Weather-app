@@ -27,28 +27,12 @@
         </div>
         <div class="display-info-box__left-panel">
           <form class="left-panel__search-form">
-            <input class="search-input" type="text" />
+            <label for="search-input" class="search-input-label"
+              >City name</label
+            >
+            <input class="search-input" id="search-input" type="text" />
           </form>
-          <div class="display-info-box__left-panel--forecasts">
-            <label class="left-panel__forecasts-label" for="forecast-7"
-              >7 days</label
-            >
-            <input
-              class="left-panel__forecasts-input"
-              type="radio"
-              name="forecast"
-              id="forecast-7"
-            />
-            <label class="left-panel__forecasts-label" for="forecast-14"
-              >14 days</label
-            >
-            <input
-              class="left-panel__forecasts-input"
-              type="radio"
-              name="forecast"
-              id="forecast-14"
-            />
-          </div>
+          <div class="display-info-box__left-panel--forecasts"></div>
           <div class="display-info-box__left-panel--settings">
             <div class="left-panel--settings__hour-format">
               <p>Hour format</p>

@@ -6,11 +6,17 @@ import * as elementFunction from "./element-functions.script.js";
 // http://api.geonames.org/ // 1000 - h // 20000 - day
 // https://api.open-meteo.com/ // 10000 - day
 
+const mainDisplayWindow = document.querySelector(".display-info-box");
 const firstForm = document.querySelector(".left-panel__search-form");
 const titleElement = document.querySelector(".right-panel__title-text");
 const leftPanel = document.querySelector(".display-info-box__left-panel");
 const rightPanel = document.querySelector(".display-info-box__right-panel");
 const listBox = document.querySelector(".right-panel__down-list");
+const multipleDaysForecastBox = document.querySelector(
+  ".display-info-box__left-panel--forecasts"
+);
+const citySearchInput = document.querySelector(".search-input");
+const citySearchInputLabel = document.querySelector(".search-input-label");
 
 // Defaults
 let temperatureUnit = "celsius";
@@ -18,8 +24,9 @@ let hoursFormat = "h24";
 
 firstForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const searchInput = e.target.children[0];
+  const searchInput = e.target.children[1];
 
+  console.log(searchInput.value);
   const coords = await fetching.getCoordinatesAndLocationName(
     searchInput.value
   );
@@ -30,9 +37,11 @@ firstForm.addEventListener("submit", async (e) => {
     titleElement,
     leftPanel,
     rightPanel,
-    listBox
+    listBox,
+    multipleDaysForecastBox
   );
 
+  helper.changeBoxStyles(mainDisplayWindow, leftPanel, rightPanel);
   // To prevent non-stop submitting
   searchInput.value = "";
   searchInput.disabled = true;
@@ -102,5 +111,15 @@ leftPanel.addEventListener("click", (e) => {
       });
       temperatureUnit = "celsius";
     }
+  }
+});
+
+citySearchInput.addEventListener("focus", () => {
+  citySearchInputLabel.classList.add("move-label");
+});
+
+citySearchInput.addEventListener("blur", () => {
+  if (citySearchInput.value === "") {
+    citySearchInputLabel.classList.remove("move-label");
   }
 });

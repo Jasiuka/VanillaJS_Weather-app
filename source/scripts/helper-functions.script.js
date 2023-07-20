@@ -198,15 +198,29 @@ export const make14DaysForecastObject = ({ daily, hourly }) => {
         midDayWeatherIcon: makeWeatherIcon(hourly.weathercode[i]),
       };
       weatherDataArray.push(newObject);
-      // midDayTemperaturesFor14Days.push(hourly.temperature_2m[i]);
-      // midDayWeatherCodeFor14Days.push(hourly.weathercode[i]);
       howManyDaysForecast++;
     }
   }
   const forecastObject = {};
   const timeArray = daily.time;
-  for (let i = 0; i < timeArray.length; i++) {
+  // Sometimes not for all 14 days forecasts are available, so had to make variable which counts how many days forecast
+  // is possible and use it instead of timeArray length
+  for (let i = 0; i < howManyDaysForecast; i++) {
     forecastObject[timeArray[i]] = weatherDataArray[i];
   }
-  console.log(forecastObject);
+  return forecastObject;
+};
+
+export const changeBoxStyles = (mainWindow, leftPanel, rightPanel) => {
+  mainWindow.style.width = "90vw";
+  mainWindow.style.height = "90vh";
+
+  leftPanel.style.height = "100%";
+  leftPanel.style.width = "30%";
+
+  rightPanel.style.padding = "3rem 4rem";
+  rightPanel.style.minWidth = "70%";
+  rightPanel.style.maxWidth = "70%";
+  rightPanel.style.overflow = "auto";
+  rightPanel.style.visibility = "visible";
 };
