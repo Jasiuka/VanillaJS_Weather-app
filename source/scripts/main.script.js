@@ -29,7 +29,6 @@ firstForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const searchInput = e.target.children[1];
 
-  console.log(searchInput.value);
   const coords = await fetching.getCoordinatesAndLocationName(
     searchInput.value
   );
@@ -41,7 +40,9 @@ firstForm.addEventListener("submit", async (e) => {
     leftPanel,
     rightPanel,
     listBox,
-    multipleDaysForecastBox
+    multipleDaysForecastBox,
+    hoursFormat,
+    temperatureUnit
   );
 
   helper.changeBoxStyles(mainDisplayWindow, leftPanel, rightPanel, settingsBox);
@@ -53,50 +54,41 @@ firstForm.addEventListener("submit", async (e) => {
   }, 1000);
 });
 
-leftPanel.addEventListener("click", (e) => {
+settingsBox.addEventListener("click", (e) => {
   const target = e.target;
-  if (target.name === "hour-format") {
-    const timeElement = document.querySelector(".right-panel__time-text");
-    const existingTime = timeElement.textContent;
-    const hourlyForecastTimeElements =
-      document.querySelectorAll(".list-item__time");
-    if (target.value === "am/pm") {
-      timeElement.textContent = helper.convertToAmPm(existingTime);
-      hourlyForecastTimeElements.forEach((element) => {
-        const existingTime = element.textContent;
-        element.textContent = helper.convertToAmPm(existingTime);
-      });
-      hoursFormat = "am/pm";
+
+  if (titleElement.textContent !== "") {
+    //
+    // HOUR FORMAT INPUTS EVENT LISTENER
+    //
+
+    if (target.name === "hour-format") {
+      // console.log("working");
+      const timeElement = document.querySelector(".right-panel__time-text");
+      const existingTime = timeElement.textContent;
+      const hourlyForecastTimeElements =
+        document.querySelectorAll(".list-item__time");
+      if (target.value === "am/pm") {
+        timeElement.textContent = helper.convertToAmPm(existingTime);
+        hourlyForecastTimeElements.forEach((element) => {
+          const existingTime = element.textContent;
+          element.textContent = helper.convertToAmPm(existingTime);
+        });
+        hoursFormat = target.value;
+      }
+      if (target.value === "h24") {
+        timeElement.textContent = helper.convertTo24HourFormat(existingTime);
+        hourlyForecastTimeElements.forEach((element) => {
+          const existingTime = element.textContent;
+          element.textContent = helper.convertTo24HourFormat(existingTime);
+        });
+        hoursFormat = target.value;
+      }
     }
-    if (target.value === "h24") {
-      timeElement.textContent = helper.convertTo24HourFormat(existingTime);
-      hourlyForecastTimeElements.forEach((element) => {
-        const existingTime = element.textContent;
-        element.textContent = helper.convertTo24HourFormat(existingTime);
-      });
-      hoursFormat = "h24";
-    }
-  }
-  if (target.name === "temp") {
-    const tempElementText = document.querySelector(
-      ".left-panel__temperature-text"
-    );
-    const tempElementIcon = document.querySelector(
-      ".left-panel__temperature-icon"
-    );
-    const hourlyForecastTempElements =
-      document.querySelectorAll(".list-item__temp");
-    const existingTemp = tempElementText.textContent;
-    if (target.value === "fahrenheit") {
-      tempElementText.textContent = helper.convertToFahrenheit(existingTemp);
-      tempElementIcon.textContent = "°F";
-      hourlyForecastTempElements.forEach((element) => {
-        const hourlyTemp = element.textContent;
-        element.textContent = helper.convertToFahrenheit(hourlyTemp);
-      });
-      temperatureUnit = "fahrenheit";
-    }
-    if (target.value === "celsius") {
+    //
+    // TEMPERATURE UNIT INPUTS EVENT LISTENER
+    //
+    if (target.name === "temp") {
       const tempElementText = document.querySelector(
         ".left-panel__temperature-text"
       );
@@ -105,14 +97,44 @@ leftPanel.addEventListener("click", (e) => {
       );
       const hourlyForecastTempElements =
         document.querySelectorAll(".list-item__temp");
+      const multipleDaysForecastElement = document.querySelectorAll(
+        ".display-info-box__left-panel--forecasts-item-temperature"
+      );
       const existingTemp = tempElementText.textContent;
-      tempElementText.textContent = helper.convertToCelsius(existingTemp);
-      tempElementIcon.textContent = "°C";
-      hourlyForecastTempElements.forEach((element) => {
-        const hourlyTemp = element.textContent;
-        element.textContent = helper.convertToCelsius(hourlyTemp);
-      });
-      temperatureUnit = "celsius";
+      if (target.value === "fahrenheit") {
+        tempElementText.textContent = helper.convertToFahrenheit(existingTemp);
+        tempElementIcon.textContent = "°F";
+        hourlyForecastTempElements.forEach((element) => {
+          const hourlyTemp = element.textContent;
+          element.textContent = helper.convertToFahrenheit(hourlyTemp);
+        });
+        multipleDaysForecastElement.forEach((element) => {
+          const existingDayTemp = element.textContent;
+          element.textContent = helper.convertToFahrenheit(existingDayTemp);
+        });
+        temperatureUnit = target.value;
+      }
+      if (target.value === "celsius") {
+        tempElementText.textContent = helper.convertToCelsius(existingTemp);
+        tempElementIcon.textContent = "°C";
+        hourlyForecastTempElements.forEach((element) => {
+          const hourlyTemp = element.textContent;
+          element.textContent = helper.convertToCelsius(hourlyTemp);
+        });
+        multipleDaysForecastElement.forEach((element) => {
+          const existingDayTemp = element.textContent;
+          element.textContent = helper.convertToCelsius(existingDayTemp);
+        });
+        temperatureUnit = target.value;
+      }
+    }
+    // FORMAT/UNIT CHANGE IF NO CITY SELECTED YET
+  } else {
+    if (target.name === "hour-format") {
+      hoursFormat = target.value;
+    }
+    if (target.name === "temp") {
+      temperatureUnit = target.value;
     }
   }
 });

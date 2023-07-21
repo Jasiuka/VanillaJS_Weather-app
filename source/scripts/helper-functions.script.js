@@ -131,9 +131,15 @@ export const getHoursFromTimeArray = (timeArray) => {
   return dayHours;
 };
 
-export const scrollToTheCurrentHourAndHighlight = (currentTime, listBox) => {
+export const scrollToTheCurrentHourAndHighlight = (
+  currentTime,
+  listBox,
+  hoursFormat = "h24"
+) => {
+  const newCurrentTime =
+    hoursFormat === "h24" ? currentTime : convertToAmPm(currentTime);
   const currentTimeForecastElement = listBox.querySelector(
-    `[data-time="${currentTime}"]`
+    `[data-time="${newCurrentTime}"]`
   );
   listBox.scrollLeft =
     currentTimeForecastElement.offsetLeft -
@@ -178,11 +184,11 @@ export const convertTo24HourFormat = (amPmFormatTime) => {
 };
 
 export const convertToFahrenheit = (cesliusTemp) => {
-  return Math.round(parseFloat(cesliusTemp) * 1.8 + 32).toString();
+  return (parseFloat(cesliusTemp) * 1.8 + 32).toFixed(1).toString();
 };
 
 export const convertToCelsius = (fahrenheitTemp) => {
-  return Math.round(parseFloat((fahrenheitTemp - 32) / 1.8));
+  return parseFloat((fahrenheitTemp - 32) / 1.8).toFixed(1);
 };
 
 export const make14DaysForecastObject = ({ daily, hourly }) => {
