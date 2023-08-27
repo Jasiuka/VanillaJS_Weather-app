@@ -20,10 +20,19 @@ const citySearchInputLabel = document.querySelector(".search-input-label");
 const settingsBox = document.querySelector(
   ".display-info-box__left-panel--settings"
 );
+const saveButton = document.querySelector(".save-btn");
+const clearButton = document.querySelector(".clear-btn");
+
+// Settings radio buttons
+const AMPM = document.getElementById("ampm");
+const H24 = document.getElementById("h24");
+const CELSIUS = document.getElementById("celsius");
+const FAHRENHEIT = document.getElementById("fahrenheit");
 
 // Defaults
 let temperatureUnit = "celsius";
 let hoursFormat = "h24";
+let location = "";
 
 firstForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -148,3 +157,51 @@ citySearchInput.addEventListener("blur", () => {
     citySearchInputLabel.classList.remove("move-label");
   }
 });
+
+saveButton.addEventListener("click", () => {
+  const locationArr = titleElement.textContent.split(",");
+  location = locationArr[0];
+  helper.saveDataObject(
+    helper.createSaveObject(hoursFormat, temperatureUnit, location)
+  );
+});
+clearButton.addEventListener("click", () => {
+  localStorage.removeItem("settings");
+});
+
+const appStart = async () => {
+  const item = localStorage.getItem("settings");
+  if (item) {
+    const nItem = JSON.parse(item);
+    temperatureUnit = nItem.temperatureUnit;
+    hoursFormat = nItem.hourFormat;
+    location = nItem.location;
+
+    helper.checkHourButtonsBySettings(hoursFormat);
+    helper.checkTempButtonsBySettings(temperatureUnit);
+
+    const coords = await fetching.getCoordinatesAndLocationName(location);
+    elementFunction.createDataElement(
+      fetching.getWeatherData(coords),
+      fetching.getTimeOfLocation(coords),
+      coords,
+      titleElement,
+      leftPanel,
+      rightPanel,
+      listBox,
+      multipleDaysForecastBox,
+      hoursFormat,
+      temperatureUnit
+    );
+    helper.changeBoxStyles(
+      mainDisplayWindow,
+      leftPanel,
+      rightPanel,
+      settingsBox
+    );
+  } else {
+    return;
+  }
+};
+
+appStart();

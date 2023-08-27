@@ -241,3 +241,48 @@ export const changeBoxStyles = (
   // display: flex;
   // justify-content: space-around;
 };
+
+// export const getDataForSave = () => {};
+
+export const createSaveObject = (
+  hoursSettings,
+  temperatureSettings,
+  locationName
+) => {
+  const newSaveObject = {
+    hourFormat: hoursSettings,
+    temperatureUnit: temperatureSettings,
+    location: locationName,
+  };
+  return newSaveObject;
+};
+
+export const saveDataObject = (objectToSave) => {
+  localStorage.setItem("settings", JSON.stringify(objectToSave));
+};
+
+export const checkTempButtonsBySettings = (tempUnit) => {
+  switch (tempUnit) {
+    case "celsius":
+      document.getElementById(tempUnit).checked = true;
+      break;
+    case "fahrenheit":
+      document.getElementById(tempUnit).checked = true;
+      break;
+    default:
+      return;
+  }
+};
+
+export const checkHourButtonsBySettings = (hourFormat) => {
+  switch (hourFormat) {
+    case "h24":
+      document.getElementById("h24").checked = true;
+      break;
+    case "am/pm":
+      document.getElementById("ampm").checked = true;
+      break;
+    default:
+      return;
+  }
+};

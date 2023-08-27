@@ -100,9 +100,10 @@ body {
 
 .display-info-box__left-panel {
   backdrop-filter: blur(6px);
-  padding: 2rem 3rem;
+  padding: 2rem 2rem;
+  padding-bottom: 2rem;
   border-right: solid 1px rgba(165, 165, 165, 0.496);
-  padding-top: 5rem;
+  padding-top: 2.5rem;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -115,6 +116,8 @@ body {
     padding: 0.5rem;
     border-radius: 4px;
     padding: 0.5rem 1rem; }
+  .display-info-box__left-panel--buttons {
+    order: 5; }
   .display-info-box__left-panel form {
     order: 1;
     position: relative; }
@@ -135,7 +138,8 @@ body {
     order: 4;
     margin-top: auto;
     border-top: 1px solid #e9ecef;
-    padding-top: 1rem; }
+    padding-top: 1rem;
+    padding-bottom: 2rem; }
     .display-info-box__left-panel--settings .settings-label {
       display: inline-block;
       background-color: #d6dadd;
