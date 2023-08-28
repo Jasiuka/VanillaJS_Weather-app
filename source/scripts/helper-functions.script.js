@@ -142,9 +142,7 @@ export const scrollToTheCurrentHourAndHighlight = (
     `[data-time="${newCurrentTime}"]`
   );
   listBox.scrollLeft =
-    currentTimeForecastElement.offsetLeft -
-    listBox.offsetWidth / 2 +
-    currentTimeForecastElement.offsetWidth / 2;
+    currentTimeForecastElement.offsetLeft - listBox.offsetWidth;
 
   currentTimeForecastElement.classList.add("highlighted");
 };

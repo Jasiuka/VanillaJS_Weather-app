@@ -325,3 +325,32 @@ body {
 
 #celsius:checked + .settings-label {
   background-color: #5a9ada; }
+
+.loading-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #cfcfcf;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  backdrop-filter: blur(4px);
+  display: none; }
+  .loading-box span {
+    color: #eeeeee;
+    font-size: 1.8rem;
+    font-weight: 400; }
+
+.loading-icon {
+  width: 2rem;
+  height: 2rem;
+  animation: spin infinite 2s; }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }

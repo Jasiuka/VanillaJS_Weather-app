@@ -34,9 +34,12 @@ let temperatureUnit = "celsius";
 let hoursFormat = "h24";
 let location = "";
 
+const loadingBox = document.querySelector(".loading-box");
+
 firstForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const searchInput = e.target.children[1];
+  loadingBox.style.display = "flex";
 
   const coords = await fetching.getCoordinatesAndLocationName(
     searchInput.value
@@ -55,9 +58,11 @@ firstForm.addEventListener("submit", async (e) => {
   );
 
   helper.changeBoxStyles(mainDisplayWindow, leftPanel, rightPanel, settingsBox);
+  loadingBox.style.display = "none";
   // To prevent non-stop submitting
   searchInput.value = "";
   searchInput.disabled = true;
+
   setTimeout(function () {
     searchInput.disabled = false;
   }, 1000);
@@ -172,6 +177,8 @@ clearButton.addEventListener("click", () => {
 const appStart = async () => {
   const item = localStorage.getItem("settings");
   if (item) {
+    loadingBox.style.display = "flex";
+
     const nItem = JSON.parse(item);
     temperatureUnit = nItem.temperatureUnit;
     hoursFormat = nItem.hourFormat;
@@ -199,6 +206,7 @@ const appStart = async () => {
       rightPanel,
       settingsBox
     );
+    loadingBox.style.display = "none";
   } else {
     return;
   }
