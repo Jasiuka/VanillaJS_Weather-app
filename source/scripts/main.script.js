@@ -35,10 +35,20 @@ let hoursFormat = "h24";
 let location = "";
 
 const loadingBox = document.querySelector(".loading-box");
+const messageBox = document.querySelector(".message-box");
 
 firstForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+
   const searchInput = e.target.children[1];
+  if (!searchInput.value) {
+    helper.showMessageBox(
+      messageBox,
+      "Please enter a city name to find the location.",
+      true
+    );
+    return;
+  }
   loadingBox.style.display = "flex";
 
   const coords = await fetching.getCoordinatesAndLocationName(
@@ -59,6 +69,7 @@ firstForm.addEventListener("submit", async (e) => {
 
   helper.changeBoxStyles(mainDisplayWindow, leftPanel, rightPanel, settingsBox);
   loadingBox.style.display = "none";
+
   // To prevent non-stop submitting
   searchInput.value = "";
   searchInput.disabled = true;
@@ -165,13 +176,24 @@ citySearchInput.addEventListener("blur", () => {
 
 saveButton.addEventListener("click", () => {
   const locationArr = titleElement.textContent.split(",");
+
   location = locationArr[0];
+  if (!location) {
+    helper.showMessageBox(
+      messageBox,
+      "Save unsuccessful. Location not specified",
+      true
+    );
+    return;
+  }
   helper.saveDataObject(
     helper.createSaveObject(hoursFormat, temperatureUnit, location)
   );
+  helper.showMessageBox(messageBox, "Saved successfully");
 });
 clearButton.addEventListener("click", () => {
   localStorage.removeItem("settings");
+  helper.showMessageBox(messageBox, "Cleared successfully");
 });
 
 const appStart = async () => {

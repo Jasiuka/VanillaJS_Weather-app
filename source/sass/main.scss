@@ -64,7 +64,7 @@
   // background-color: rgba(155, 155, 155, 0.262);
   backdrop-filter: blur(6px);
   padding: 2rem 2rem;
-  padding-bottom: 2rem;
+  padding-bottom: 5rem;
   border-right: solid 1px rgba(165, 165, 165, 0.496);
   padding-top: 2.5rem;
   display: flex;
@@ -87,6 +87,26 @@
 
   &--buttons {
     order: 5;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    & button {
+      padding: 0.5rem;
+      border-radius: 3px;
+      background-color: transparent;
+      color: #e9ecef;
+      backdrop-filter: blur(4px);
+      // outline: none;
+      border: 1px solid #e9ecef;
+      transition: 0.3s all;
+      cursor: pointer;
+
+      &:active,
+      &:hover {
+        background-color: #e9ecef48;
+      }
+    }
   }
 
   & form {
@@ -385,7 +405,7 @@
   display: none;
 
   & span {
-    color: #eeeeee;
+    color: #e9ecef;
     font-size: 1.8rem;
     font-weight: 400;
   }
@@ -404,4 +424,28 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+// Message box
+
+.message-box {
+  position: absolute;
+  padding: 1rem 2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(177, 21, 21, 0.16);
+
+  backdrop-filter: blur(4px);
+  border: 1px solid #e9ecef;
+
+  & span {
+    font-size: 1.8rem;
+    color: #e9ecef;
+  }
+}
+
+.message-box-hidden {
+  visibility: hidden;
+  opacity: 0;
 }

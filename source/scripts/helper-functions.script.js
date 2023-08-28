@@ -284,3 +284,23 @@ export const checkHourButtonsBySettings = (hourFormat) => {
       return;
   }
 };
+
+// Message box
+
+export const showMessageBox = (
+  messageBoxElement,
+  messageText,
+  error = false
+) => {
+  if (!error) {
+    messageBoxElement.style.backgroundColor = "rgba(36, 180, 36, 0.16)";
+  } else {
+    messageBoxElement.style.backgroundColor = "rgba(177, 21, 21, 0.16)";
+  }
+  const messageBoxSpanElement = messageBoxElement.querySelector("span");
+  messageBoxSpanElement.textContent = messageText;
+  messageBoxElement.classList.toggle("message-box-hidden");
+  setTimeout(() => {
+    messageBoxElement.classList.toggle("message-box-hidden");
+  }, 1500);
+};
