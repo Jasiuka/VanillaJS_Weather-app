@@ -18,39 +18,6 @@ body {
   font-family: "Montserrat", "Sans-serif";
   height: 100vh; }
 
-.hide-form {
-  visibility: hidden;
-  pointer-events: none; }
-
-.location-box {
-  padding: 1rem;
-  border-radius: 3px;
-  background-color: #f3f3f33c;
-  backdrop-filter: blur(5px); }
-
-.first-location {
-  grid-column: 2 / span 6;
-  grid-row: 5 / -1;
-  justify-self: center; }
-
-.location-displayed-title {
-  font-size: 8rem;
-  font-weight: 200; }
-
-.data-value {
-  font-size: 3rem;
-  color: white; }
-
-.icon {
-  width: 4rem;
-  height: 4rem; }
-
-.data-value__time,
-.data-value__temp {
-  font-size: 7rem;
-  color: white;
-  font-weight: 400; }
-
 .main-window {
   position: relative;
   display: flex;
@@ -97,6 +64,70 @@ body {
   .display-info-box__background-img {
     width: 100%;
     height: 100%; }
+
+.display-info-box__right-panel {
+  padding: 3rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  color: #e9ecef;
+  transition: all 0.5s;
+  padding: 0;
+  min-width: 0;
+  max-width: 0;
+  overflow: hidden;
+  visibility: hidden; }
+  .display-info-box__right-panel h2 {
+    font-size: 7rem;
+    font-weight: 200;
+    letter-spacing: -3px;
+    grid-column: 1 / -1;
+    grid-row: 1 / span 1;
+    display: flex;
+    gap: 2.3rem;
+    align-items: center; }
+    .display-info-box__right-panel h2 .right-panel__title-icon {
+      justify-self: flex-start; }
+  .display-info-box__right-panel .right-panel__time-date-box {
+    grid-column: 1 / 6;
+    grid-row: 2 / span 1;
+    font-size: 3rem;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column; }
+  .display-info-box__right-panel .right-panel__down-list {
+    grid-row: 6 / -1;
+    grid-column: 1 / -1;
+    border-top: solid 1px #e9ecef;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    scroll-behavior: smooth; }
+  .display-info-box__right-panel .right-panel__weather-description {
+    grid-row: 5 / 6;
+    grid-column: 1 / -1;
+    font-size: 7rem; }
+
+.right-panel__down-list--list-item {
+  background-color: transparent;
+  padding: 1rem;
+  font-size: 2rem;
+  min-width: 12rem;
+  max-width: 12rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(6px);
+  border-radius: 3px;
+  border: 1px solid #e9ecef; }
+
+.right-panel__time, .right-panel__date {
+  display: flex;
+  gap: 3.5rem; }
+  .right-panel__time span, .right-panel__date span {
+    display: flex;
+    align-items: center; }
 
 .display-info-box__left-panel {
   backdrop-filter: blur(6px);
@@ -201,49 +232,6 @@ body {
         .display-info-box__left-panel--forecasts-list div .day-name {
           font-weight: 500; }
 
-.display-info-box__right-panel {
-  padding: 3rem 4rem;
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(8, 1fr);
-  color: #e9ecef;
-  transition: all 0.5s;
-  padding: 0;
-  min-width: 0;
-  max-width: 0;
-  overflow: hidden;
-  visibility: hidden; }
-  .display-info-box__right-panel h2 {
-    font-size: 7rem;
-    font-weight: 200;
-    letter-spacing: -3px;
-    grid-column: 1 / -1;
-    grid-row: 1 / span 1;
-    display: flex;
-    gap: 2.3rem;
-    align-items: center; }
-    .display-info-box__right-panel h2 .right-panel__title-icon {
-      justify-self: flex-start; }
-  .display-info-box__right-panel .right-panel__time-date-box {
-    grid-column: 1 / 6;
-    grid-row: 2 / span 1;
-    font-size: 3rem;
-    font-weight: 400;
-    display: flex;
-    flex-direction: column; }
-  .display-info-box__right-panel .right-panel__down-list {
-    grid-row: 6 / -1;
-    grid-column: 1 / -1;
-    border-top: solid 1px #e9ecef;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    scroll-behavior: smooth; }
-  .display-info-box__right-panel .right-panel__weather-description {
-    grid-row: 5 / 6;
-    grid-column: 1 / -1;
-    font-size: 7rem; }
-
 .weather-icon {
   width: 4rem;
   height: 4rem; }
@@ -252,20 +240,6 @@ body {
   width: 3rem;
   height: 3rem;
   fill: white; }
-
-.right-panel__down-list--list-item {
-  background-color: transparent;
-  padding: 1rem;
-  font-size: 2rem;
-  min-width: 12rem;
-  max-width: 12rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(6px);
-  border-radius: 3px;
-  border: 1px solid #e9ecef; }
 
 .weather-icon {
   fill: white; }
@@ -277,13 +251,6 @@ body {
   width: 4.6rem;
   height: 4.6rem;
   fill: white; }
-
-.right-panel__time, .right-panel__date {
-  display: flex;
-  gap: 3.5rem; }
-  .right-panel__time span, .right-panel__date span {
-    display: flex;
-    align-items: center; }
 
 .display-info-box__left-panel--forecasts-list::-webkit-scrollbar,
 .right-panel__down-list::-webkit-scrollbar {

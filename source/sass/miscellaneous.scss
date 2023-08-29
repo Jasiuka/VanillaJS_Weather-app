@@ -1,0 +1,159 @@
+.weather-icon {
+  width: 4rem;
+  height: 4rem;
+}
+
+.icon {
+  width: 3rem;
+  height: 3rem;
+  fill: white;
+}
+
+.weather-icon {
+  fill: white;
+}
+
+.highlighted {
+  background-color: #e9ecef48;
+}
+
+.title-icon {
+  width: 4.6rem;
+  height: 4.6rem;
+  fill: white;
+}
+
+.display-info-box__left-panel--forecasts-list,
+.right-panel__down-list {
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #e9ecef;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #d6dadd;
+  }
+
+  &::-webkit-scrollbar-button {
+    fill: #d6dadd;
+  }
+}
+
+.move-label {
+  transform: translate(-10px, -35px);
+}
+
+//  Settings
+
+.left-panel--settings__hour-format,
+.left-panel--settings__temp {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  p {
+    font-size: 1.6rem;
+    color: #e9ecef;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .label {
+      color: #e9ecef;
+      font-weight: 500;
+    }
+  }
+}
+
+// Label style changing on input check
+
+#h24:checked + .settings-label {
+  background-color: #5a9ada;
+}
+
+#ampm:checked + .settings-label {
+  background-color: #5a9ada;
+}
+
+#fahrenheit:checked + .settings-label {
+  background-color: #5a9ada;
+}
+
+#celsius:checked + .settings-label {
+  background-color: #5a9ada;
+}
+
+// Loading
+
+.loading-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  // background-color: #cfcfcf;
+  border: 1px solid #cfcfcf;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  backdrop-filter: blur(4px);
+
+  display: none;
+
+  & span {
+    color: #e9ecef;
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
+}
+
+.loading-icon {
+  width: 2rem;
+  height: 2rem;
+  animation: spin infinite 2s;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// Message box
+
+.message-box {
+  position: absolute;
+  padding: 1rem 2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(177, 21, 21, 0.16);
+
+  backdrop-filter: blur(4px);
+  border: 1px solid #e9ecef;
+
+  & span {
+    font-size: 1.8rem;
+    color: #e9ecef;
+  }
+}
+
+.message-box-hidden {
+  visibility: hidden;
+  opacity: 0;
+}
