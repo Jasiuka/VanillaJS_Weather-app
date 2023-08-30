@@ -14,10 +14,89 @@
   </head>
   <body>
     <main class="main-window">
+      <!--  -->
+      <!-- First window -->
+      <!--  -->
+      <div class="first-window">
+        <form class="first-window__form">
+          <label
+            for="first-window__form-input"
+            class="first-window__form-input-label"
+            >City name</label
+          >
+          <input type="text" id="first-window__form-input" />
+          <span class="first-window__form-input-bar bar"></span>
+        </form>
+        <!-- First window settings -->
+        <div class="first-window__settings">
+          <div class="first-window__settings--hour-format">
+            <p>Hour format</p>
+            <div class="first-window__settings--hour-format--box">
+              <input
+                type="radio"
+                name="f-hour-format"
+                id="fh24"
+                value="h24"
+                checked
+              />
+              <label class="settings-label" for="fh24"></label>
+              <label class="label">24 hour format</label>
+            </div>
+            <div class="first-window__settings--hour-format--box">
+              <input
+                type="radio"
+                name="f-hour-format"
+                id="fampm"
+                value="ampm"
+              />
+              <label class="settings-label" for="fampm"></label>
+              <label class="label">AM/PM format</label>
+            </div>
+          </div>
+          <div class="first-window__settings--temp">
+            <p>Temperature units</p>
+            <div class="first-window__settings--temp-box">
+              <input
+                type="radio"
+                name="ftemp"
+                id="fcelsius"
+                value="celsius"
+                checked
+              />
+              <label class="settings-label" for="fcelsius"></label>
+              <label class="label">Celsius</label>
+            </div>
+            <div class="first-window__settings--temp-box">
+              <input
+                type="radio"
+                name="ftemp"
+                id="ffahrenheit"
+                value="fahrenheit"
+              />
+              <label class="settings-label" for="ffahrenheit"></label>
+              <label class="label">Fahrenheits</label>
+            </div>
+          </div>
+        </div>
+        <!-- First window settings -->
+      </div>
+      <!--  -->
+      <!-- First window -->
+      <!--  -->
+
+      <!-- Main window background -->
       <div class="background">
         <img src="./assets/main-img.jpg" class="background-img" />
       </div>
+      <!-- Main window background -->
+
+      <!--  Main window overlay -->
       <div class="main-window__overlay"></div>
+      <!-- Main window overlay -->
+
+      <!--  -->
+      <!-- Display info box -->
+      <!--  -->
       <div class="display-info-box">
         <div class="display-info-box__background">
           <img
@@ -25,14 +104,17 @@
             class="display-info-box__background-img"
           />
         </div>
+        <!-- Left panel -->
         <div class="display-info-box__left-panel">
           <form class="left-panel__search-form">
             <label for="search-input" class="search-input-label"
               >City name</label
             >
             <input class="search-input" id="search-input" type="text" />
+            <span class="left-panel__search-form-bar bar"></span>
           </form>
           <div class="display-info-box__left-panel--forecasts"></div>
+          <!-- Left panel settings -->
           <div class="display-info-box__left-panel--settings">
             <div class="left-panel--settings__hour-format">
               <p>Hour format</p>
@@ -43,19 +125,15 @@
                   id="h24"
                   value="h24"
                   checked
+                  disabled
                 />
                 <label class="settings-label" for="h24"></label>
-                <label class="label">24 Hour format</label>
+                <span class="label">24 hour format</span>
               </div>
               <div class="hour-format-box">
-                <input
-                  type="radio"
-                  name="hour-format"
-                  id="ampm"
-                  value="am/pm"
-                />
+                <input type="radio" name="hour-format" id="ampm" value="ampm" />
                 <label class="settings-label" for="ampm"></label>
-                <label class="label">AM/PM Format</label>
+                <span class="label">AM/PM format</span>
               </div>
             </div>
             <br />
@@ -70,7 +148,7 @@
                   checked
                 />
                 <label class="settings-label" for="celsius"></label>
-                <label class="label">Celsius</label>
+                <span class="label">Celsius</span>
               </div>
               <div class="temp-unit-box">
                 <input
@@ -80,15 +158,18 @@
                   value="fahrenheit"
                 />
                 <label class="settings-label" for="fahrenheit"></label>
-                <label class="label">Fahrenheits</label>
+                <span class="label">Fahrenheits</span>
               </div>
             </div>
           </div>
+          <!-- Left panel settings -->
           <div class="display-info-box__left-panel--buttons">
             <button class="save-btn">Save settings & location</button>
             <button class="clear-btn">Clear settings & location</button>
           </div>
         </div>
+        <!-- Left panel -->
+        <!-- Right panel -->
         <div class="display-info-box__right-panel">
           <h2 class="right-panel__title">
             <span class="right-panel__title-icon"
@@ -107,7 +188,13 @@
           </h2>
           <ul class="right-panel__down-list"></ul>
         </div>
+        <!-- Right panel -->
       </div>
+      <!--  -->
+      <!-- Display info box -->
+      <!--  -->
+
+      <!-- Loading box -->
       <div class="loading-box">
         <img
           class="loading-icon"
@@ -116,9 +203,13 @@
         />
         <span>Getting weather..</span>
       </div>
+      <!-- Loading box -->
+
+      <!-- Message box -->
       <div class="message-box message-box-hidden">
         <span>Saved successfully</span>
       </div>
+      <!-- Message box -->
     </main>
     <script src="./scripts/main.script.js" type="module"></script>
   </body>

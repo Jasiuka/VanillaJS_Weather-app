@@ -3,15 +3,16 @@
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
-  // min-width: 70%;
+  min-width: 70%;
+  max-width: 70%;
   color: #e9ecef;
   transition: all 0.5s;
 
-  padding: 0;
-  min-width: 0;
-  max-width: 0;
-  overflow: hidden;
-  visibility: hidden;
+  // padding: 0;
+  // min-width: 0;
+  // max-width: 0;
+  overflow: auto;
+  // visibility: hidden;
 
   & h2 {
     font-size: 7rem;

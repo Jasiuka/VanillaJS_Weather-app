@@ -48,7 +48,14 @@
 }
 
 .move-label {
-  transform: translate(-10px, -35px);
+  transform: translate(-1px, -25px);
+  font-size: 1.4rem !important;
+}
+
+// first window label
+.move-f-label {
+  transform: translate(-1px, -25px);
+  font-size: 1.6rem !important;
 }
 
 //  Settings
@@ -75,7 +82,7 @@
   }
 }
 
-// Label style changing on input check
+// Label style changing on input check (display window)
 
 #h24:checked + .settings-label {
   background-color: #5a9ada;
@@ -90,6 +97,23 @@
 }
 
 #celsius:checked + .settings-label {
+  background-color: #5a9ada;
+}
+
+// Label style changing on input check (first window)
+#fh24:checked + .settings-label {
+  background-color: #5a9ada;
+}
+
+#fampm:checked + .settings-label {
+  background-color: #5a9ada;
+}
+
+#ffahrenheit:checked + .settings-label {
+  background-color: #5a9ada;
+}
+
+#fcelsius:checked + .settings-label {
   background-color: #5a9ada;
 }
 

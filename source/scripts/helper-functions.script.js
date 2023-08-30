@@ -215,29 +215,9 @@ export const make14DaysForecastObject = ({ daily, hourly }) => {
   return forecastObject;
 };
 
-export const changeBoxStyles = (
-  mainWindow,
-  leftPanel,
-  rightPanel,
-  settingsBox
-) => {
-  mainWindow.style.width = "90vw";
-  mainWindow.style.height = "90vh";
-
-  leftPanel.style.height = "100%";
-  leftPanel.style.width = "30%";
-
-  rightPanel.style.padding = "3rem 4rem";
-  rightPanel.style.minWidth = "70%";
-  rightPanel.style.maxWidth = "70%";
-  rightPanel.style.overflow = "auto";
-  rightPanel.style.visibility = "visible";
-
-  settingsBox.style.justifyContent = "space-around";
-  settingsBox.style.display = "flex";
-
-  // display: flex;
-  // justify-content: space-around;
+export const changeBoxStyles = (firstWindow, displayWindow) => {
+  firstWindow.style.display = "none";
+  displayWindow.style.display = "flex";
 };
 
 // export const getDataForSave = () => {};
@@ -263,9 +243,11 @@ export const checkTempButtonsBySettings = (tempUnit) => {
   switch (tempUnit) {
     case "celsius":
       document.getElementById(tempUnit).checked = true;
+      document.getElementById(tempUnit).disabled = true;
       break;
     case "fahrenheit":
       document.getElementById(tempUnit).checked = true;
+      document.getElementById(tempUnit).disabled = true;
       break;
     default:
       return;
@@ -276,9 +258,11 @@ export const checkHourButtonsBySettings = (hourFormat) => {
   switch (hourFormat) {
     case "h24":
       document.getElementById("h24").checked = true;
+      document.getElementById("h24").disabled = true;
       break;
-    case "am/pm":
+    case "ampm":
       document.getElementById("ampm").checked = true;
+      document.getElementById("ampm").disabled = true;
       break;
     default:
       return;
