@@ -23,12 +23,6 @@ const settingsBox = document.querySelector(
 const saveButton = document.querySelector(".save-btn");
 const clearButton = document.querySelector(".clear-btn");
 
-// Settings radio buttons
-const AMPM = document.getElementById("ampm");
-const H24 = document.getElementById("h24");
-const CELSIUS = document.getElementById("celsius");
-const FAHRENHEIT = document.getElementById("fahrenheit");
-
 // Defaults
 let temperatureUnit = "celsius";
 let hoursFormat = "h24";
@@ -51,21 +45,37 @@ firstForm.addEventListener("submit", async (e) => {
   }
   loadingBox.style.display = "flex";
 
-  const coords = await fetching.getCoordinatesAndLocationName(
-    searchInput.value
-  );
-  elementFunction.createDataElement(
-    fetching.getWeatherData(coords),
-    fetching.getTimeOfLocation(coords),
-    coords,
-    titleElement,
-    leftPanel,
-    rightPanel,
-    listBox,
-    multipleDaysForecastBox,
-    hoursFormat,
-    temperatureUnit
-  );
+  try {
+    const coords = await fetching.getCoordinatesAndLocationName(
+      searchInput.value
+    );
+    elementFunction.createDataElement(
+      fetching.getWeatherData(coords),
+      fetching.getTimeOfLocation(coords),
+      coords,
+      titleElement,
+      leftPanel,
+      rightPanel,
+      listBox,
+      multipleDaysForecastBox,
+      hoursFormat,
+      temperatureUnit
+    );
+  } catch (error) {
+    if (
+      error instanceof TypeError &&
+      error.message.includes("'lat' of 'jsonData[0]' as it is undefined")
+    ) {
+      helper.showMessageBox(messageBox, "Sorry, location was not found.", true);
+    } else {
+      helper.showMessageBox(
+        messageBox,
+        "An error occurred while processing data. Please try again later",
+        true
+      );
+    }
+    loadingBox.style.display = "none";
+  }
 
   helper.changeBoxStyles(mainDisplayWindow, leftPanel, rightPanel, settingsBox);
   loadingBox.style.display = "none";

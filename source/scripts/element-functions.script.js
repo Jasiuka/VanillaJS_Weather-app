@@ -52,6 +52,12 @@ export const createDataElement = async (
   };
 
   // Change location text
+  if (location.length > 27) {
+    locationTitleElement.style.fontSize = "4rem";
+    locationTitleElement.style.wordBreak = "break-all";
+  } else {
+    locationTitleElement.style.fontSize = "6rem";
+  }
   locationTitleElement.textContent = location;
 
   // Check if temp element exist, if exist change it's text, if not, create new element.

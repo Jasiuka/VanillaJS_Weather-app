@@ -1,0 +1,46 @@
+// First breakpoint - firstBreakpoint -- 1156px | 72.25 rem
+// Second breakpoint - secondBreakpoint -- 912px | 57 rem
+// Third breakpoint - thirdBreakpoint -- 740px | 46.25 rem
+// Fourth breakpoint - fourthBreakpoint -- 552px | 34.5 rem
+// Fifth breakpoint - fifthBreakpoint -- 472px | 29.5 rem
+
+@mixin query($breakpoint) {
+  @if $breakpoint == firstBreakpoint {
+    @media only screen and (max-width: 72.25rem) {
+      // 1156px
+      @content;
+    }
+  }
+  @if $breakpoint == secondBreakpoint {
+    @media only screen and (max-width: 57rem) {
+      // 912px
+      @content;
+    }
+  }
+  @if $breakpoint == thirdBreakpoint {
+    @media only screen and (max-width: 46.25rem) {
+      // 740px
+      @content;
+    }
+  }
+  @if $breakpoint == fourthBreakpoint {
+    @media only screen and (max-width: 34.5rem) {
+      // 552px
+      @content;
+    }
+  }
+
+  @if $breakpoint == fifthBreakpoint {
+    @media only screen and (max-width: 29.5rem) {
+      // 472px
+      @content;
+    }
+  }
+}
+
+// @include query(firstBreakpoint) {
+//     width: 70vw;
+//   }
+//   @include query(secondBreakpoint) {
+//     width: 80vw;
+//   }
