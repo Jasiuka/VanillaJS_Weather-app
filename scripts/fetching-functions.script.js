@@ -27,7 +27,7 @@ export const getTimeOfLocation = async ({ lat, lon }) => {
   const longitudeValue = longtitude.toFixed(2);
 
   const responseFromAPI = await fetch(
-    `http://api.geonames.org/timezoneJSON?lat=${latitudeValue}&lng=${longitudeValue}&username=jasiuka`
+    `http://secure.geonames.org/timezoneJSON?lat=${latitudeValue}&lng=${longitudeValue}&username=jasiuka`
   );
   const jsonData = await responseFromAPI.json();
 
