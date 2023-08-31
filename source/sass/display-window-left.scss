@@ -3,10 +3,23 @@
   backdrop-filter: blur(6px);
   transition: 0.3s width;
   height: 100%;
-  @include query(firstBreakpoint) {
+  width: 30%;
+  @include mediaQuery(firstBreakpoint) {
     position: absolute;
     z-index: 2;
-    width: 3%;
+    width: 30%;
+  }
+  @include mediaQuery(secondBreakpoint) {
+    width: 40%;
+  }
+  @include mediaQuery(fourthBreakpoint) {
+    width: 50%;
+  }
+  @include mediaQuery(fifthBreakpoint) {
+    width: 55%;
+  }
+  @include mediaQuery(sixthBreakpoint) {
+    width: 70%;
   }
 }
 
@@ -23,10 +36,11 @@
   transition: opacity 0.3s;
   height: 100%;
 
-  @include query(firstBreakpoint) {
-    visibility: hidden;
-    pointer-events: none;
+  @include mediaQuery(firstBreakpoint) {
+    visibility: visible;
+    pointer-events: all;
     overflow: hidden;
+    opacity: 1;
   }
 
   & .search-input {
@@ -212,7 +226,7 @@
   cursor: pointer;
   border-radius: 4px;
 
-  @include query(firstBreakpoint) {
+  @include mediaQuery(firstBreakpoint) {
     display: flex;
 
     &:not(:hover) {
@@ -230,14 +244,14 @@
   }
 }
 
-.left-panel-inner-expanded {
-  visibility: visible;
-  pointer-events: all;
-  opacity: 1;
+.left-panel-inner-collapsed {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
 }
 
-.left-panel-outer-expanded {
-  width: 30%;
+.left-panel-outer-collapsed {
+  width: 3%;
 }
 
 @keyframes toggleButtonAnimation {

@@ -10,6 +10,9 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; }
+  @media only screen and (max-width: 25rem) {
+    html {
+      font-size: 50%; } }
 
 body {
   font-weight: 300;
@@ -167,6 +170,12 @@ body {
     display: flex;
     gap: 2.3rem;
     align-items: center; }
+    @media only screen and (max-width: 62.5rem) {
+      .display-info-box__right-panel h2 {
+        word-break: break-word; } }
+    @media only screen and (max-width: 31.25rem) {
+      .display-info-box__right-panel h2 {
+        gap: 1.5rem; } }
     .display-info-box__right-panel h2 .right-panel__title-icon {
       justify-self: flex-start; }
   .display-info-box__right-panel .right-panel__time-date-box {
@@ -176,6 +185,9 @@ body {
     font-weight: 400;
     display: flex;
     flex-direction: column; }
+    @media only screen and (max-width: 31.25rem) {
+      .display-info-box__right-panel .right-panel__time-date-box {
+        font-size: 2.2rem; } }
   .display-info-box__right-panel .right-panel__down-list {
     grid-row: 6 / -1;
     grid-column: 1 / -1;
@@ -184,10 +196,20 @@ body {
     align-items: center;
     gap: 2rem;
     scroll-behavior: smooth; }
+    @media only screen and (max-width: 62.5rem) {
+      .display-info-box__right-panel .right-panel__down-list {
+        grid-row: 5 / -1; } }
   .display-info-box__right-panel .right-panel__weather-description {
     grid-row: 5 / 6;
     grid-column: 1 / -1;
     font-size: 7rem; }
+    @media only screen and (max-width: 62.5rem) {
+      .display-info-box__right-panel .right-panel__weather-description {
+        grid-row: 4 / 5;
+        font-size: 6rem; } }
+    @media only screen and (max-width: 31.25rem) {
+      .display-info-box__right-panel .right-panel__weather-description {
+        font-size: 5rem; } }
 
 .right-panel__down-list--list-item {
   background-color: transparent;
@@ -202,10 +224,18 @@ body {
   backdrop-filter: blur(6px);
   border-radius: 3px;
   border: 1px solid #e9ecef; }
+  @media only screen and (max-width: 45rem) {
+    .right-panel__down-list--list-item {
+      font-size: 1.5rem;
+      min-width: 9rem;
+      padding: 0.5rem; } }
 
 .right-panel__time, .right-panel__date {
   display: flex;
   gap: 3.5rem; }
+  @media only screen and (max-width: 31.25rem) {
+    .right-panel__time, .right-panel__date {
+      gap: 1.5rem; } }
   .right-panel__time span, .right-panel__date span {
     display: flex;
     align-items: center; }
@@ -214,12 +244,25 @@ body {
   position: relative;
   backdrop-filter: blur(6px);
   transition: 0.3s width;
-  height: 100%; }
+  height: 100%;
+  width: 30%; }
   @media only screen and (max-width: 78.125rem) {
     .display-info-box__left-panel--outer {
       position: absolute;
       z-index: 2;
-      width: 3%; } }
+      width: 30%; } }
+  @media only screen and (max-width: 68.75rem) {
+    .display-info-box__left-panel--outer {
+      width: 40%; } }
+  @media only screen and (max-width: 48.75rem) {
+    .display-info-box__left-panel--outer {
+      width: 50%; } }
+  @media only screen and (max-width: 45rem) {
+    .display-info-box__left-panel--outer {
+      width: 55%; } }
+  @media only screen and (max-width: 31.25rem) {
+    .display-info-box__left-panel--outer {
+      width: 70%; } }
 
 .display-info-box__left-panel {
   backdrop-filter: blur(6px);
@@ -234,9 +277,10 @@ body {
   height: 100%; }
   @media only screen and (max-width: 78.125rem) {
     .display-info-box__left-panel {
-      visibility: hidden;
-      pointer-events: none;
-      overflow: hidden; } }
+      visibility: visible;
+      pointer-events: all;
+      overflow: hidden;
+      opacity: 1; } }
   .display-info-box__left-panel .search-input {
     font-size: 1.6rem;
     background-color: transparent;
@@ -388,13 +432,13 @@ body {
   .left-panel__toggle:hover {
     background-color: rgba(155, 154, 154, 0.185); }
 
-.left-panel-inner-expanded {
-  visibility: visible;
-  pointer-events: all;
-  opacity: 1; }
+.left-panel-inner-collapsed {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0; }
 
-.left-panel-outer-expanded {
-  width: 30%; }
+.left-panel-outer-collapsed {
+  width: 3%; }
 
 @keyframes toggleButtonAnimation {
   0% {
@@ -405,6 +449,10 @@ body {
 .weather-icon {
   width: 4rem;
   height: 4rem; }
+  @media only screen and (max-width: 45rem) {
+    .weather-icon {
+      width: 3.5rem;
+      height: 3.5rem; } }
 
 .icon {
   width: 3rem;

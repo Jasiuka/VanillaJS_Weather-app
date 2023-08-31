@@ -1,11 +1,13 @@
 // First breakpoint - firstBreakpoint -- 1250px | 78.125 rem
+// Second breakpoint - secondBreakpoint -- 1100px | 68.75 rem
+// Third breakpoint - thirdBreakpoint -- 1000px | 62.5 rem
+// Fourth breakpoint - fourthBreakpoint -- 780px | 48.75 rem
+// Fifth breakpoint - fourthBreakpoint -- 720px | 45 rem
 
-// Second breakpoint - secondBreakpoint -- 912px | 57 rem
-// Third breakpoint - thirdBreakpoint -- 740px | 46.25 rem
-// Fourth breakpoint - fourthBreakpoint -- 552px | 34.5 rem
-// Fifth breakpoint - fifthBreakpoint -- 472px | 29.5 rem
+// Sixth breakpoint - sixthBreakpoint -- 500px | 31.25 rem
+// Seventh breakpoint - seventhBreakpoint -- 400px | 25 rem
 
-@mixin query($breakpoint) {
+@mixin mediaQuery($breakpoint) {
   @if $breakpoint == firstBreakpoint {
     @media only screen and (max-width: 78.125rem) {
       // 1250px
@@ -13,35 +15,39 @@
     }
   }
   @if $breakpoint == secondBreakpoint {
-    @media only screen and (max-width: 57rem) {
-      // 912px
+    @media only screen and (max-width: 68.75rem) {
+      // 1100px
       @content;
     }
   }
   @if $breakpoint == thirdBreakpoint {
-    @media only screen and (max-width: 46.25rem) {
-      // 740px
+    @media only screen and (max-width: 62.5rem) {
+      // 1000px
       @content;
     }
   }
   @if $breakpoint == fourthBreakpoint {
-    @media only screen and (max-width: 34.5rem) {
-      // 552px
+    @media only screen and (max-width: 48.75rem) {
+      // 780px
       @content;
     }
   }
-
   @if $breakpoint == fifthBreakpoint {
-    @media only screen and (max-width: 29.5rem) {
-      // 472px
+    @media only screen and (max-width: 45rem) {
+      // 720px
+      @content;
+    }
+  }
+  @if $breakpoint == sixthBreakpoint {
+    @media only screen and (max-width: 31.25rem) {
+      // 500px
+      @content;
+    }
+  }
+  @if $breakpoint == seventhBreakpoint {
+    @media only screen and (max-width: 25rem) {
+      // 400px
       @content;
     }
   }
 }
-
-// @include query(firstBreakpoint) {
-//     width: 70vw;
-//   }
-//   @include query(secondBreakpoint) {
-//     width: 80vw;
-//   }

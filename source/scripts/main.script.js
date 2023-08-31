@@ -99,6 +99,7 @@ firstForm.addEventListener("submit", async (e) => {
       );
     }
     loadingBox.style.display = "none";
+    helper.leftPanelToggleHandler(displayInfoLeftPanelOuter, leftPanel, true);
   }
 
   // helper.changeBoxStyles(mainDisplayWindow, leftPanel, rightPanel, settingsBox);
@@ -159,6 +160,7 @@ firstWindowForm.addEventListener("submit", async (e) => {
   }
   loadingBox.style.display = "none";
   helper.changeBoxStyles(firstWindow, mainDisplayWindow);
+  helper.leftPanelToggleHandler(displayInfoLeftPanelOuter, leftPanel, true);
 });
 
 // Settings box when display window is visible (location selected)

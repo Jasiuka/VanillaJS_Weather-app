@@ -41,7 +41,7 @@
   width: 90vw;
   display: none;
 
-  @include query(firstBreakpoint) {
+  @include mediaQuery(firstBreakpoint) {
   }
 }
 

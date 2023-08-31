@@ -10,7 +10,7 @@
 
   overflow: auto;
 
-  @include query(firstBreakpoint) {
+  @include mediaQuery(firstBreakpoint) {
     min-width: unset;
     max-width: unset;
   }
@@ -26,6 +26,13 @@
     gap: 2.3rem;
     align-items: center;
 
+    @include mediaQuery(thirdBreakpoint) {
+      word-break: break-word;
+    }
+    @include mediaQuery(sixthBreakpoint) {
+      gap: 1.5rem;
+    }
+
     & .right-panel__title-icon {
       justify-self: flex-start;
     }
@@ -39,7 +46,8 @@
     display: flex;
     flex-direction: column;
 
-    @include query(firstBreakpoint) {
+    @include mediaQuery(sixthBreakpoint) {
+      font-size: 2.2rem;
     }
   }
 
@@ -52,7 +60,8 @@
     gap: 2rem;
     scroll-behavior: smooth;
 
-    @include query(firstBreakpoint) {
+    @include mediaQuery(thirdBreakpoint) {
+      grid-row: 5 / -1;
     }
   }
 
@@ -61,7 +70,12 @@
     grid-column: 1 / -1;
     font-size: 7rem;
 
-    @include query(firstBreakpoint) {
+    @include mediaQuery(thirdBreakpoint) {
+      grid-row: 4 / 5;
+      font-size: 6rem;
+    }
+    @include mediaQuery(sixthBreakpoint) {
+      font-size: 5rem;
     }
   }
 }
@@ -79,19 +93,22 @@
   backdrop-filter: blur(6px);
   border-radius: 3px;
   border: 1px solid #e9ecef;
+
+  @include mediaQuery(fifthBreakpoint) {
+    font-size: 1.5rem;
+    min-width: 9rem;
+    padding: 0.5rem;
+  }
 }
 
 .right-panel {
-  &__time {
-    @include query(firstBreakpoint) {
-    }
-  }
   &__time,
   &__date {
     display: flex;
     gap: 3.5rem;
 
-    @include query(firstBreakpoint) {
+    @include mediaQuery(sixthBreakpoint) {
+      gap: 1.5rem;
     }
 
     span {

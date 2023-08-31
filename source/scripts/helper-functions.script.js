@@ -292,13 +292,20 @@ export const showMessageBox = (
 export const leftPanelToggleHandler = (
   leftPanelOuter,
   leftPanelInner,
-  closed = true
+  closed = false
 ) => {
-  if (!closed) {
-    leftPanelInner.classList.add("left-panel-inner-expanded");
-    leftPanelOuter.classList.add("left-panel-outer-expanded");
+  const mediaQuery = window.matchMedia(
+    "only screen and (max-width: 78.125rem)"
+  );
+  if (mediaQuery.matches) {
+    if (!closed) {
+      leftPanelInner.classList.remove("left-panel-inner-collapsed");
+      leftPanelOuter.classList.remove("left-panel-outer-collapsed");
+    } else {
+      leftPanelInner.classList.add("left-panel-inner-collapsed");
+      leftPanelOuter.classList.add("left-panel-outer-collapsed");
+    }
   } else {
-    leftPanelInner.classList.remove("left-panel-inner-expanded");
-    leftPanelOuter.classList.remove("left-panel-outer-expanded");
+    return;
   }
 };

@@ -1,6 +1,10 @@
 .weather-icon {
   width: 4rem;
   height: 4rem;
+  @include mediaQuery(fifthBreakpoint) {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
 }
 
 .icon {

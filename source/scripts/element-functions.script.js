@@ -52,11 +52,22 @@ export const createDataElement = async (
   };
 
   // Change location text
-  if (location.length > 27) {
-    locationTitleElement.style.fontSize = "4rem";
-    locationTitleElement.style.wordBreak = "break-all";
+  const mediaQuery = window.matchMedia("only screen and (max-width: 45rem)");
+  if (mediaQuery.matches) {
+    if (location.length > 27) {
+      locationTitleElement.style.fontSize = "3rem";
+      locationTitleElement.style.wordBreak = "break-all";
+    } else {
+      locationTitleElement.style.fontSize = "5rem";
+      locationTitleElement.style.wordBreak = "break-word";
+    }
   } else {
-    locationTitleElement.style.fontSize = "6rem";
+    if (location.length > 27) {
+      locationTitleElement.style.fontSize = "4rem";
+      locationTitleElement.style.wordBreak = "break-all";
+    } else {
+      locationTitleElement.style.fontSize = "6rem";
+    }
   }
   locationTitleElement.textContent = location;
 
