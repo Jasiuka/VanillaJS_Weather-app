@@ -26,10 +26,13 @@ export const getTimeOfLocation = async ({ lat, lon }) => {
   const latitudeValue = lattitude.toFixed(2);
   const longitudeValue = longtitude.toFixed(2);
 
+  const proxyUrl = "https://cors-anywhere.herokuapp.com/";
   const responseFromAPI = await fetch(
-    `http://secure.geonames.org/timezoneJSON?lat=${latitudeValue}&lng=${longitudeValue}&username=jasiuka`
+    `${proxyUrl}http://secure.geonames.org/timezoneJSON?lat=${latitudeValue}&lng=${longitudeValue}&username=jasiuka
+    `
   );
   const jsonData = await responseFromAPI.json();
+  console.log(jsonData);
 
   const timeArray = jsonData.time.split(" ");
   const sunsetArray = jsonData.sunset.split(" ");
