@@ -7,11 +7,15 @@ import * as elementFunction from "./element-functions.script.js";
 // https://api.open-meteo.com/ // 10000 - day
 
 // Big elements, container variables
+
 const mainDisplayWindow = document.querySelector(".display-info-box");
 const firstForm = document.querySelector(".left-panel__search-form");
 const firstWindow = document.querySelector(".first-window");
 const firstWindowForm = document.querySelector(".first-window__form");
 const titleElement = document.querySelector(".right-panel__title-text");
+const displayInfoLeftPanelOuter = document.querySelector(
+  ".display-info-box__left-panel--outer"
+);
 const leftPanel = document.querySelector(".display-info-box__left-panel");
 const rightPanel = document.querySelector(".display-info-box__right-panel");
 const listBox = document.querySelector(".right-panel__down-list");
@@ -35,6 +39,7 @@ const firstWindowSearchInput = document.getElementById(
 const firstWindowSearchInputLabel = document.querySelector(
   ".first-window__form-input-label"
 );
+const leftPanelToggleButton = document.querySelector(".left-panel__toggle");
 const saveButton = document.querySelector(".save-btn");
 const clearButton = document.querySelector(".clear-btn");
 
@@ -45,6 +50,8 @@ const messageBox = document.querySelector(".message-box");
 let temperatureUnit = "celsius";
 let hoursFormat = "h24";
 let location = "";
+
+let toggled = false;
 
 // Display window form action
 firstForm.addEventListener("submit", async (e) => {
@@ -324,6 +331,12 @@ saveButton.addEventListener("click", () => {
 clearButton.addEventListener("click", () => {
   localStorage.removeItem("settings");
   helper.showMessageBox(messageBox, "Cleared successfully");
+});
+
+// Menu/Left panel toggle action
+leftPanelToggleButton.addEventListener("click", () => {
+  helper.leftPanelToggleHandler(displayInfoLeftPanelOuter, leftPanel, toggled);
+  toggled = toggled === false ? true : false;
 });
 
 // Start of the app function

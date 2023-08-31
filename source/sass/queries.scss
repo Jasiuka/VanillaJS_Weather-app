@@ -1,4 +1,4 @@
-// First breakpoint - firstBreakpoint -- 1200px | 75 rem
+// First breakpoint - firstBreakpoint -- 1250px | 78.125 rem
 
 // Second breakpoint - secondBreakpoint -- 912px | 57 rem
 // Third breakpoint - thirdBreakpoint -- 740px | 46.25 rem
@@ -7,8 +7,8 @@
 
 @mixin query($breakpoint) {
   @if $breakpoint == firstBreakpoint {
-    @media only screen and (max-width: 75rem) {
-      // 1200px
+    @media only screen and (max-width: 78.125rem) {
+      // 1250px
       @content;
     }
   }

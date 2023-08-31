@@ -54,7 +54,7 @@
             </div>
           </div>
           <div class="first-window__settings--temp">
-            <p>Temperature units</p>
+            <p>Temp. Units</p>
             <div class="first-window__settings--temp-box">
               <input
                 type="radio"
@@ -105,68 +105,98 @@
           />
         </div>
         <!-- Left panel -->
-        <div class="display-info-box__left-panel">
-          <form class="left-panel__search-form">
-            <label for="search-input" class="search-input-label"
-              >City name</label
+        <div class="display-info-box__left-panel--outer">
+          <div class="display-info-box__left-panel">
+            <form class="left-panel__search-form">
+              <label for="search-input" class="search-input-label"
+                >City name</label
+              >
+              <input class="search-input" id="search-input" type="text" />
+              <span class="left-panel__search-form-bar bar"></span>
+            </form>
+            <div class="display-info-box__left-panel--forecasts"></div>
+            <!-- Left panel settings -->
+            <div class="display-info-box__left-panel--settings">
+              <div class="left-panel--settings__hour-format">
+                <p>Hour format</p>
+                <div class="hour-format-box">
+                  <input
+                    type="radio"
+                    name="hour-format"
+                    id="h24"
+                    value="h24"
+                    checked
+                    disabled
+                  />
+                  <label class="settings-label" for="h24"></label>
+                  <span class="label">24 hour format</span>
+                </div>
+                <div class="hour-format-box">
+                  <input
+                    type="radio"
+                    name="hour-format"
+                    id="ampm"
+                    value="ampm"
+                  />
+                  <label class="settings-label" for="ampm"></label>
+                  <span class="label">AM/PM format</span>
+                </div>
+              </div>
+              <br />
+              <div class="left-panel--settings__temp">
+                <p>Temp. Units</p>
+                <div class="temp-unit-box">
+                  <input
+                    type="radio"
+                    name="temp"
+                    id="celsius"
+                    value="celsius"
+                    checked
+                  />
+                  <label class="settings-label" for="celsius"></label>
+                  <span class="label">Celsius</span>
+                </div>
+                <div class="temp-unit-box">
+                  <input
+                    type="radio"
+                    name="temp"
+                    id="fahrenheit"
+                    value="fahrenheit"
+                  />
+                  <label class="settings-label" for="fahrenheit"></label>
+                  <span class="label">Fahrenheits</span>
+                </div>
+              </div>
+            </div>
+            <!-- Left panel settings -->
+            <div class="display-info-box__left-panel--buttons">
+              <button class="save-btn">Save settings & location</button>
+              <button class="clear-btn">Clear settings & location</button>
+            </div>
+          </div>
+          <button class="left-panel__toggle" title="Open/Close left panel">
+            <svg
+              class="left-panel__toggle-icon"
+              version="1.1"
+              id="Layer_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              fill="#e9ecef"
+              x="0px"
+              y="0px"
+              width="80.593px"
+              height="122.88px"
+              viewBox="0 0 80.593 122.88"
+              enable-background="new 0 0 80.593 122.88"
+              xml:space="preserve"
             >
-            <input class="search-input" id="search-input" type="text" />
-            <span class="left-panel__search-form-bar bar"></span>
-          </form>
-          <div class="display-info-box__left-panel--forecasts"></div>
-          <!-- Left panel settings -->
-          <div class="display-info-box__left-panel--settings">
-            <div class="left-panel--settings__hour-format">
-              <p>Hour format</p>
-              <div class="hour-format-box">
-                <input
-                  type="radio"
-                  name="hour-format"
-                  id="h24"
-                  value="h24"
-                  checked
-                  disabled
+              <g>
+                <polygon
+                  points="0,0 30.82,0 80.593,61.44 30.82,122.88 0,122.88 49.772,61.44 0,0"
                 />
-                <label class="settings-label" for="h24"></label>
-                <span class="label">24 hour format</span>
-              </div>
-              <div class="hour-format-box">
-                <input type="radio" name="hour-format" id="ampm" value="ampm" />
-                <label class="settings-label" for="ampm"></label>
-                <span class="label">AM/PM format</span>
-              </div>
-            </div>
-            <br />
-            <div class="left-panel--settings__temp">
-              <p>Temperature units</p>
-              <div class="temp-unit-box">
-                <input
-                  type="radio"
-                  name="temp"
-                  id="celsius"
-                  value="celsius"
-                  checked
-                />
-                <label class="settings-label" for="celsius"></label>
-                <span class="label">Celsius</span>
-              </div>
-              <div class="temp-unit-box">
-                <input
-                  type="radio"
-                  name="temp"
-                  id="fahrenheit"
-                  value="fahrenheit"
-                />
-                <label class="settings-label" for="fahrenheit"></label>
-                <span class="label">Fahrenheits</span>
-              </div>
-            </div>
-          </div>
-          <!-- Left panel settings -->
-          <div class="display-info-box__left-panel--buttons">
-            <button class="save-btn">Save settings & location</button>
-            <button class="clear-btn">Clear settings & location</button>
-          </div>
+              </g>
+            </svg>
+          </button>
         </div>
         <!-- Left panel -->
         <!-- Right panel -->

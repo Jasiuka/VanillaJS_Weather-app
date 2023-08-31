@@ -40,9 +40,9 @@
   display: flex;
   width: 90vw;
   display: none;
-  // @include query(firstBreakpoint) {
-  //   flex-direction: column;
-  // }
+
+  @include query(firstBreakpoint) {
+  }
 }
 
 .display-info-box__background {

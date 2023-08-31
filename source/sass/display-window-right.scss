@@ -8,11 +8,12 @@
   color: #e9ecef;
   transition: all 0.5s;
 
-  // padding: 0;
-  // min-width: 0;
-  // max-width: 0;
   overflow: auto;
-  // visibility: hidden;
+
+  @include query(firstBreakpoint) {
+    min-width: unset;
+    max-width: unset;
+  }
 
   & h2 {
     font-size: 7rem;
@@ -33,12 +34,13 @@
   & .right-panel__time-date-box {
     grid-column: 1 / 6;
     grid-row: 2 / span 1;
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-weight: 400;
     display: flex;
     flex-direction: column;
-    // justify-content: space-between;
-    // align-items: center;
+
+    @include query(firstBreakpoint) {
+    }
   }
 
   & .right-panel__down-list {
@@ -49,12 +51,18 @@
     align-items: center;
     gap: 2rem;
     scroll-behavior: smooth;
+
+    @include query(firstBreakpoint) {
+    }
   }
 
   & .right-panel__weather-description {
     grid-row: 5 / 6;
     grid-column: 1 / -1;
     font-size: 7rem;
+
+    @include query(firstBreakpoint) {
+    }
   }
 }
 
@@ -74,10 +82,17 @@
 }
 
 .right-panel {
+  &__time {
+    @include query(firstBreakpoint) {
+    }
+  }
   &__time,
   &__date {
     display: flex;
     gap: 3.5rem;
+
+    @include query(firstBreakpoint) {
+    }
 
     span {
       display: flex;

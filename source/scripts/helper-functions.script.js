@@ -288,3 +288,17 @@ export const showMessageBox = (
     messageBoxElement.classList.toggle("message-box-hidden");
   }, 1500);
 };
+
+export const leftPanelToggleHandler = (
+  leftPanelOuter,
+  leftPanelInner,
+  closed = true
+) => {
+  if (!closed) {
+    leftPanelInner.classList.add("left-panel-inner-expanded");
+    leftPanelOuter.classList.add("left-panel-outer-expanded");
+  } else {
+    leftPanelInner.classList.remove("left-panel-inner-expanded");
+    leftPanelOuter.classList.remove("left-panel-outer-expanded");
+  }
+};
