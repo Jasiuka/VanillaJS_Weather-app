@@ -50,6 +50,7 @@ let location = "";
 firstForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
+  console.log("Searching with: ", temperatureUnit);
   const searchInput = e.target.children[1];
   if (!searchInput.value) {
     helper.showMessageBox(
@@ -252,6 +253,9 @@ settingsBox.addEventListener("click", (e) => {
       temperatureUnit = target.value;
     }
   }
+
+  console.log(temperatureUnit);
+  console.log(hoursFormat);
 });
 
 // First window settings box action (when no location)

@@ -65,7 +65,10 @@ export const createDataElement = async (
     ".left-panel__temperature-text"
   );
   if (existingTempElement) {
-    existingTempElement.textContent = currentTemperature[currentHour];
+    existingTempElement.textContent = changeTemperatureText(
+      temperatureUnits,
+      currentTemperature[currentHour]
+    );
   } else {
     leftPanel.appendChild(
       createTemperatureElement(
@@ -142,6 +145,19 @@ export const createTemperatureElement = (
   temperatureElement.appendChild(temperatureElementText);
   temperatureElement.appendChild(temperatureElementIcon);
   return temperatureElement;
+};
+
+export const changeTemperatureText = (
+  tempUnits = "celsius",
+  currentTemperature
+) => {
+  let currTemp;
+  if (tempUnits === "celsius") {
+    currTemp = currentTemperature;
+  } else {
+    currTemp = convertToFahrenheit(currentTemperature);
+  }
+  return currTemp;
 };
 
 export const createTimeAndDateElement = (
