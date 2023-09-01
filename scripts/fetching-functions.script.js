@@ -32,7 +32,6 @@ export const getTimeOfLocation = async ({ lat, lon }) => {
     `
   );
   const jsonData = await responseFromAPI.json();
-  console.log(jsonData);
 
   const timeArray = jsonData.time.split(" ");
   const sunsetArray = jsonData.sunset.split(" ");
@@ -60,6 +59,5 @@ export const getWeatherData = async ({ lat, lon }) => {
     `https://api.open-meteo.com/v1/forecast?latitude=${latitudeValue}&longitude=${longitudeValue}&hourly=temperature_2m,weathercode,&daily=sunrise,sunset&timezone=auto&forecast_days=14&current_weather=true`
   );
   const jsonData = await responseFromAPI.json();
-  console.log(jsonData);
   return jsonData;
 };

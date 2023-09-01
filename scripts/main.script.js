@@ -42,6 +42,7 @@ const firstWindowSearchInputLabel = document.querySelector(
 const leftPanelToggleButton = document.querySelector(".left-panel__toggle");
 const saveButton = document.querySelector(".save-btn");
 const clearButton = document.querySelector(".clear-btn");
+const refreshButton = document.querySelector(".refresh-button");
 
 const loadingBox = document.querySelector(".loading-box");
 const messageBox = document.querySelector(".message-box");
@@ -52,6 +53,7 @@ let hoursFormat = "h24";
 let location = "";
 
 let toggled = false;
+let coordinates;
 
 // Display window form action
 firstForm.addEventListener("submit", async (e) => {
@@ -71,7 +73,8 @@ firstForm.addEventListener("submit", async (e) => {
     const coords = await fetching.getCoordinatesAndLocationName(
       searchInput.value
     );
-    elementFunction.createDataElement(
+    coordinates = coords;
+    elementFunction.createAndDisplayAllData(
       fetching.getWeatherData(coords),
       fetching.getTimeOfLocation(coords),
       coords,
@@ -100,7 +103,6 @@ firstForm.addEventListener("submit", async (e) => {
     helper.leftPanelToggleHandler(displayInfoLeftPanelOuter, leftPanel, true);
   }
 
-  // helper.changeBoxStyles(mainDisplayWindow, leftPanel, rightPanel, settingsBox);
   loadingBox.style.display = "none";
 
   // To prevent non-stop submitting
@@ -129,7 +131,8 @@ firstWindowForm.addEventListener("submit", async (e) => {
     const coords = await fetching.getCoordinatesAndLocationName(
       searchInput.value
     );
-    elementFunction.createDataElement(
+    coordinates = coords;
+    elementFunction.createAndDisplayAllData(
       fetching.getWeatherData(coords),
       fetching.getTimeOfLocation(coords),
       coords,
@@ -157,7 +160,7 @@ firstWindowForm.addEventListener("submit", async (e) => {
     loadingBox.style.display = "none";
   }
   loadingBox.style.display = "none";
-  helper.changeBoxStyles(firstWindow, mainDisplayWindow);
+  helper.changeBoxStyles(firstWindow, mainDisplayWindow, refreshButton);
   helper.leftPanelToggleHandler(displayInfoLeftPanelOuter, leftPanel, true);
 });
 
@@ -171,7 +174,6 @@ settingsBox.addEventListener("click", (e) => {
     //
 
     if (target.name === "hour-format") {
-      // console.log("working");
       const timeElement = document.querySelector(".right-panel__time-text");
       const existingTime = timeElement.textContent;
       const hourlyForecastTimeElements =
@@ -260,9 +262,6 @@ settingsBox.addEventListener("click", (e) => {
       temperatureUnit = target.value;
     }
   }
-
-  console.log(temperatureUnit);
-  console.log(hoursFormat);
 });
 
 // First window settings box action (when no location)
@@ -333,6 +332,23 @@ clearButton.addEventListener("click", () => {
   helper.showMessageBox(messageBox, "Cleared successfully");
 });
 
+// Refresh button
+refreshButton.addEventListener("click", () => {
+  elementFunction.createAndDisplayAllData(
+    fetching.getWeatherData(coordinates),
+    fetching.getTimeOfLocation(coordinates),
+    coordinates,
+    titleElement,
+    leftPanel,
+    rightPanel,
+    listBox,
+    multipleDaysForecastBox,
+    hoursFormat,
+    temperatureUnit
+  );
+  helper.showMessageBox(messageBox, "Refreshed");
+});
+
 // Menu/Left panel toggle action
 leftPanelToggleButton.addEventListener("click", () => {
   helper.leftPanelToggleHandler(displayInfoLeftPanelOuter, leftPanel, toggled);
@@ -354,7 +370,8 @@ const appStart = async () => {
     helper.checkTempButtonsBySettings(temperatureUnit);
 
     const coords = await fetching.getCoordinatesAndLocationName(location);
-    elementFunction.createDataElement(
+    coordinates = coords;
+    elementFunction.createAndDisplayAllData(
       fetching.getWeatherData(coords),
       fetching.getTimeOfLocation(coords),
       coords,
@@ -366,7 +383,7 @@ const appStart = async () => {
       hoursFormat,
       temperatureUnit
     );
-    helper.changeBoxStyles(firstWindow, mainDisplayWindow);
+    helper.changeBoxStyles(firstWindow, mainDisplayWindow, refreshButton);
     loadingBox.style.display = "none";
   } else {
     return;

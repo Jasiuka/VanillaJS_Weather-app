@@ -493,14 +493,14 @@ body {
 .icon {
   width: 3rem;
   height: 3rem;
-  fill: white; }
+  fill: #e9ecef; }
   @media only screen and (max-width: 31.25rem) {
     .icon {
       width: 2.6rem;
       height: 2.6rem; } }
 
 .weather-icon {
-  fill: white; }
+  fill: #e9ecef; }
 
 .highlighted {
   background-color: #e9ecef48; }
@@ -508,11 +508,39 @@ body {
 .title-icon {
   width: 4.6rem;
   height: 4.6rem;
-  fill: white; }
+  fill: #e9ecef; }
   @media only screen and (max-width: 48.75rem) {
     .title-icon {
       width: 3.6rem;
       height: 3.6rem; } }
+
+.refresh-button {
+  position: absolute;
+  top: 7%;
+  right: 6.5%;
+  border: 1px transparent;
+  border-style: none;
+  padding: 1rem;
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: none;
+  text-align: center; }
+  .refresh-button:hover {
+    background-color: #f7f9fb25; }
+  @media only screen and (max-width: 62.5rem) {
+    .refresh-button {
+      right: 7%; } }
+  @media only screen and (max-width: 45rem) {
+    .refresh-button {
+      top: 6.5%; } }
+  @media only screen and (max-width: 45rem) {
+    .refresh-button {
+      top: 6%; } }
+  .refresh-button .refresh-icon {
+    width: 3rem;
+    height: 3rem; }
 
 .display-info-box__left-panel--forecasts-list::-webkit-scrollbar,
 .right-panel__down-list::-webkit-scrollbar {
@@ -592,7 +620,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  border: 1px solid #cfcfcf;
+  border: 1px solid #e9ecef;
   padding: 1rem 2rem;
   display: flex;
   align-items: center;

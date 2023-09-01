@@ -8,7 +8,7 @@ import {
   convertToAmPm,
 } from "./helper-functions.script.js";
 
-export const createDataElement = async (
+export const createAndDisplayAllData = async (
   weatherDataObject,
   locationTimeObject,
   { location },
@@ -71,7 +71,10 @@ export const createDataElement = async (
       locationTitleElement.style.fontSize = "6rem";
     }
   }
-  locationTitleElement.textContent = location;
+  locationTitleElement.textContent =
+    locationTitleElement.textContent !== location
+      ? location
+      : locationTitleElement.textContent;
 
   // Check if temp element exist, if exist change it's text, if not, create new element.
   const existingTempElement = document.querySelector(

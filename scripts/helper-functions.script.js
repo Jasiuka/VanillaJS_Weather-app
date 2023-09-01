@@ -234,12 +234,11 @@ export const make14DaysForecastObject = ({ daily, hourly }) => {
   return forecastObject;
 };
 
-export const changeBoxStyles = (firstWindow, displayWindow) => {
+export const changeBoxStyles = (firstWindow, displayWindow, refreshButton) => {
   firstWindow.style.display = "none";
   displayWindow.style.display = "flex";
+  refreshButton.style.display = "inline-block";
 };
-
-// export const getDataForSave = () => {};
 
 export const createSaveObject = (
   hoursSettings,
