@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "test": "test",
-    "watch:sass": "node-sass --watch source/sass/main.scss source/style/style.main.css"
+    "watch:sass": "node-sass --watch sass/main.scss style/style.main.css"
   },
   "repository": {
     "type": "git",
