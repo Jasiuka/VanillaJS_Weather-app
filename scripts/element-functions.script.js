@@ -52,13 +52,13 @@ export const createDataElement = async (
   };
 
   // Change location text
-  const mediaQuery = window.matchMedia("only screen and (max-width: 45rem)");
+  const mediaQuery = window.matchMedia("only screen and (max-width: 48.75rem)");
   if (mediaQuery.matches) {
     if (location.length > 27) {
-      locationTitleElement.style.fontSize = "3rem";
+      locationTitleElement.style.fontSize = "2rem";
       locationTitleElement.style.wordBreak = "break-all";
     } else {
-      locationTitleElement.style.fontSize = "5rem";
+      locationTitleElement.style.fontSize = "3rem";
       locationTitleElement.style.wordBreak = "break-word";
     }
   } else {

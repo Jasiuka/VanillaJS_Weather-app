@@ -173,10 +173,14 @@ body {
     @media only screen and (max-width: 62.5rem) {
       .display-info-box__right-panel h2 {
         word-break: break-word; } }
+    @media only screen and (max-width: 48.75rem) {
+      .display-info-box__right-panel h2 {
+        letter-spacing: 0; } }
     @media only screen and (max-width: 31.25rem) {
       .display-info-box__right-panel h2 {
         gap: 1.5rem; } }
     .display-info-box__right-panel h2 .right-panel__title-icon {
+      display: flex;
       justify-self: flex-start; }
   .display-info-box__right-panel .right-panel__time-date-box {
     grid-column: 1 / 6;
@@ -185,9 +189,15 @@ body {
     font-weight: 400;
     display: flex;
     flex-direction: column; }
+    @media only screen and (max-width: 48.75rem) {
+      .display-info-box__right-panel .right-panel__time-date-box {
+        font-size: 2.2rem;
+        gap: 0.5rem;
+        margin-top: 1rem; } }
     @media only screen and (max-width: 31.25rem) {
       .display-info-box__right-panel .right-panel__time-date-box {
-        font-size: 2.2rem; } }
+        font-size: 1.8rem;
+        gap: 1rem; } }
   .display-info-box__right-panel .right-panel__down-list {
     grid-row: 6 / -1;
     grid-column: 1 / -1;
@@ -198,7 +208,10 @@ body {
     scroll-behavior: smooth; }
     @media only screen and (max-width: 62.5rem) {
       .display-info-box__right-panel .right-panel__down-list {
-        grid-row: 5 / -1; } }
+        grid-row: 5 / 8; } }
+    @media only screen and (max-width: 48.75rem) {
+      .display-info-box__right-panel .right-panel__down-list {
+        grid-row: 5 / 7; } }
   .display-info-box__right-panel .right-panel__weather-description {
     grid-row: 5 / 6;
     grid-column: 1 / -1;
@@ -207,9 +220,12 @@ body {
       .display-info-box__right-panel .right-panel__weather-description {
         grid-row: 4 / 5;
         font-size: 6rem; } }
-    @media only screen and (max-width: 31.25rem) {
+    @media only screen and (max-width: 48.75rem) {
       .display-info-box__right-panel .right-panel__weather-description {
         font-size: 5rem; } }
+    @media only screen and (max-width: 31.25rem) {
+      .display-info-box__right-panel .right-panel__weather-description {
+        font-size: 4rem; } }
 
 .right-panel__down-list--list-item {
   background-color: transparent;
@@ -468,6 +484,10 @@ body {
   width: 3rem;
   height: 3rem;
   fill: white; }
+  @media only screen and (max-width: 31.25rem) {
+    .icon {
+      width: 2.6rem;
+      height: 2.6rem; } }
 
 .weather-icon {
   fill: white; }
@@ -479,6 +499,10 @@ body {
   width: 4.6rem;
   height: 4.6rem;
   fill: white; }
+  @media only screen and (max-width: 48.75rem) {
+    .title-icon {
+      width: 3.6rem;
+      height: 3.6rem; } }
 
 .display-info-box__left-panel--forecasts-list::-webkit-scrollbar,
 .right-panel__down-list::-webkit-scrollbar {

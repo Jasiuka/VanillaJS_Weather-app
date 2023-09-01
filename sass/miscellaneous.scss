@@ -11,6 +11,10 @@
   width: 3rem;
   height: 3rem;
   fill: white;
+  @include mediaQuery(sixthBreakpoint) {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
 }
 
 .weather-icon {
@@ -25,6 +29,11 @@
   width: 4.6rem;
   height: 4.6rem;
   fill: white;
+
+  @include mediaQuery(fourthBreakpoint) {
+    width: 3.6rem;
+    height: 3.6rem;
+  }
 }
 
 .display-info-box__left-panel--forecasts-list,
