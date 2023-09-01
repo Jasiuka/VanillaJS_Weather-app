@@ -42,8 +42,10 @@ export const createDataElement = async (
     ? currentHour.substring(1, 2)
     : currentHour;
 
+  const screenWidth = window.innerWidth;
   const weatherObj = makeWeatherDescriptionAndBackground(
-    weatherCode[currentHour]
+    weatherCode[currentHour],
+    screenWidth
   );
   const todayWeatherData = {
     temperatureArray: currentTemperature.slice(0, 24),
@@ -218,6 +220,7 @@ export const changeBackgroundImage = (backgroundUrl) => {
   const displayBoxBackgroundElement = document.querySelector(
     ".display-info-box__background-img"
   );
+  windowBackgroundElement.removeAttribute("srcset");
   windowBackgroundElement.setAttribute("src", backgroundUrl);
   displayBoxBackgroundElement.setAttribute("src", backgroundUrl);
 };

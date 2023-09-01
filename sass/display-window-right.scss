@@ -77,6 +77,9 @@
     @include mediaQuery(fourthBreakpoint) {
       grid-row: 5 / 7;
     }
+    @include mediaQuery(lowerHeightBreakpoint) {
+      grid-row: 5 / -1;
+    }
   }
 
   & .right-panel__weather-description {
@@ -93,6 +96,9 @@
     }
     @include mediaQuery(sixthBreakpoint) {
       font-size: 4rem;
+    }
+    @include mediaQuery(lowerHeightBreakpoint) {
+      grid-row: 4 / 5;
     }
   }
 }

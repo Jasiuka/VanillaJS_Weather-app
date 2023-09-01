@@ -7,6 +7,7 @@
 // Sixth breakpoint - sixthBreakpoint -- 500px | 31.25 rem
 // Seventh breakpoint - seventhBreakpoint -- 400px | 25 rem
 
+// Width
 @mixin mediaQuery($breakpoint) {
   @if $breakpoint == firstBreakpoint {
     @media only screen and (max-width: 78.125rem) {
@@ -47,6 +48,13 @@
   @if $breakpoint == seventhBreakpoint {
     @media only screen and (max-width: 25rem) {
       // 400px
+      @content;
+    }
+  }
+
+  @if $breakpoint == lowerHeightBreakpoint {
+    @media only screen and (max-height: 45rem) and (min-width: 45rem) {
+      // 720px height
       @content;
     }
   }

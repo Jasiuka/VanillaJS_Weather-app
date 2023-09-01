@@ -212,6 +212,9 @@ body {
     @media only screen and (max-width: 48.75rem) {
       .display-info-box__right-panel .right-panel__down-list {
         grid-row: 5 / 7; } }
+    @media only screen and (max-height: 45rem) and (min-width: 45rem) {
+      .display-info-box__right-panel .right-panel__down-list {
+        grid-row: 5 / -1; } }
   .display-info-box__right-panel .right-panel__weather-description {
     grid-row: 5 / 6;
     grid-column: 1 / -1;
@@ -226,6 +229,9 @@ body {
     @media only screen and (max-width: 31.25rem) {
       .display-info-box__right-panel .right-panel__weather-description {
         font-size: 4rem; } }
+    @media only screen and (max-height: 45rem) and (min-width: 45rem) {
+      .display-info-box__right-panel .right-panel__weather-description {
+        grid-row: 4 / 5; } }
 
 .right-panel__down-list--list-item {
   background-color: transparent;
@@ -585,6 +591,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 10;
   border: 1px solid #cfcfcf;
   padding: 1rem 2rem;
   display: flex;
@@ -611,6 +618,7 @@ body {
 
 .message-box {
   position: absolute;
+  z-index: 10;
   padding: 1rem 2rem;
   top: 50%;
   left: 50%;
