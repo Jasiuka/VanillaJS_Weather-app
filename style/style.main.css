@@ -526,7 +526,8 @@ body {
   cursor: pointer;
   transition: all 0.3s;
   display: none;
-  text-align: center; }
+  align-items: center;
+  justify-content: center; }
   .refresh-button:hover {
     background-color: #f7f9fb25; }
   @media only screen and (max-width: 62.5rem) {

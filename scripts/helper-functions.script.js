@@ -237,7 +237,7 @@ export const make14DaysForecastObject = ({ daily, hourly }) => {
 export const changeBoxStyles = (firstWindow, displayWindow, refreshButton) => {
   firstWindow.style.display = "none";
   displayWindow.style.display = "flex";
-  refreshButton.style.display = "inline-block";
+  refreshButton.style.display = "flex";
 };
 
 export const createSaveObject = (
