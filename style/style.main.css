@@ -440,6 +440,7 @@ body {
   position: absolute;
   top: 47%;
   right: -50px;
+  right: -30px;
   padding: 1rem;
   background-color: transparent;
   border: none;
@@ -452,6 +453,9 @@ body {
       display: flex; }
       .left-panel__toggle:not(:hover) {
         animation: toggleButtonAnimation infinite 2s; } }
+  @media only screen and (max-width: 48.75rem) {
+    .left-panel__toggle {
+      right: -23px; } }
   .left-panel__toggle-icon {
     width: 5rem;
     height: 5rem; }
