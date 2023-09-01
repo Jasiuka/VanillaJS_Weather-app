@@ -56,8 +56,6 @@ let toggled = false;
 // Display window form action
 firstForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-
-  console.log("Searching with: ", temperatureUnit);
   const searchInput = e.target.children[1];
   if (!searchInput.value) {
     helper.showMessageBox(

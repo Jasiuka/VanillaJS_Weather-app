@@ -21,12 +21,12 @@ export const getCoordinatesAndLocationName = async (cityName) => {
 };
 
 export const getTimeOfLocation = async ({ lat, lon }) => {
-  const lattitude = +lat;
-  const longtitude = +lon;
-  const latitudeValue = lattitude.toFixed(2);
-  const longitudeValue = longtitude.toFixed(2);
+  const latitude = +lat;
+  const longitude = +lon;
+  const latitudeValue = latitude.toFixed(4);
+  const longitudeValue = longitude.toFixed(4);
 
-  const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+  const proxyUrl = "https://corsproxy.io/?";
   const responseFromAPI = await fetch(
     `${proxyUrl}http://secure.geonames.org/timezoneJSON?lat=${latitudeValue}&lng=${longitudeValue}&username=jasiuka
     `
@@ -57,7 +57,7 @@ export const getWeatherData = async ({ lat, lon }) => {
   const latitudeValue = lattitude.toFixed(2);
   const longitudeValue = longtitude.toFixed(2);
   const responseFromAPI = await fetch(
-    `https://api.open-meteo.com/v1/forecast?latitude=${latitudeValue}&longitude=${longitudeValue}&hourly=temperature_2m,weathercode,is_day&daily=sunrise,sunset&timezone=auto&forecast_days=14`
+    `https://api.open-meteo.com/v1/forecast?latitude=${latitudeValue}&longitude=${longitudeValue}&hourly=temperature_2m,weathercode,&daily=sunrise,sunset&timezone=auto&forecast_days=14&current_weather=true`
   );
   const jsonData = await responseFromAPI.json();
   console.log(jsonData);
