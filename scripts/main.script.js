@@ -101,6 +101,7 @@ firstForm.addEventListener("submit", async (e) => {
     }
     loadingBox.style.display = "none";
     helper.leftPanelToggleHandler(displayInfoLeftPanelOuter, leftPanel, true);
+    return;
   }
 
   loadingBox.style.display = "none";
@@ -158,6 +159,7 @@ firstWindowForm.addEventListener("submit", async (e) => {
       );
     }
     loadingBox.style.display = "none";
+    return;
   }
   loadingBox.style.display = "none";
   helper.changeBoxStyles(firstWindow, mainDisplayWindow, refreshButton);

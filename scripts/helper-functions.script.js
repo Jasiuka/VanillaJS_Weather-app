@@ -143,6 +143,7 @@ export const makeWeatherIcon = (weatherCode) => {
 };
 
 export const getHoursFromTimeArray = (timeArray) => {
+  if (!timeArray || timeArray.length === 0) return;
   const dayHours = [];
   timeArray.forEach((timeElement) => {
     const splittedTime = timeElement.split("T");

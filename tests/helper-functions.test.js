@@ -75,5 +75,19 @@ describe("Helper functions tests", () => {
         expect(hoursArray[i]).toBe(shouldReturn[i]);
       }
     });
+    test("Should return nothing if array is empty/null/undefined", () => {
+      const emptyArray = [];
+      const undefinedValue = undefined;
+      const nullValue = null;
+
+      const firstOutput = helperFunction.getHoursFromTimeArray(emptyArray);
+      const secondOutput = helperFunction.getHoursFromTimeArray(undefinedValue);
+      const thirdOutput = helperFunction.getHoursFromTimeArray(nullValue);
+
+      expect(firstOutput).toBe(undefined);
+      expect(secondOutput).toBe(undefined);
+      expect(thirdOutput).toBe(undefined);
+    });
   });
+  describe("convertToAmPm function tests", () => {});
 });
