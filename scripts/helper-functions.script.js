@@ -169,45 +169,67 @@ export const scrollToTheCurrentHourAndHighlight = (
 };
 
 export const convertToAmPm = (h24FormatTime) => {
-  const [hours, minutes] = h24FormatTime.split(":");
-  const amOrPm = parseInt(hours) >= 12 ? "PM" : "AM";
-  if (hours === "00") {
-    return `12:${minutes} ${amOrPm}`;
+  if (typeof h24FormatTime === "string" && h24FormatTime.trim() !== "") {
+    const [hours, minutes] = h24FormatTime.split(":");
+    const amOrPm = parseInt(hours) >= 12 ? "PM" : "AM";
+    if (hours === "00") {
+      return `12:${minutes} ${amOrPm}`;
+    }
+    if (hours === "12" && amOrPm === "AM") {
+      return `1:${minutes} ${amOrPm}`;
+    }
+    if (hours === "12" && amOrPm === "PM") {
+      return `12:${minutes} ${amOrPm}`;
+    }
+    const amPmHours = (parseInt(hours) % 12).toString();
+    return `${amPmHours}:${minutes} ${amOrPm}`;
+  } else {
+    return;
   }
-  if (hours === "12" && amOrPm === "AM") {
-    return `1:${minutes} ${amOrPm}`;
-  }
-  if (hours === "12" && amOrPm === "PM") {
-    return `12:${minutes} ${amOrPm}`;
-  }
-  const amPmHours = (parseInt(hours) % 12).toString();
-  return `${amPmHours}:${minutes} ${amOrPm}`;
 };
 
 export const convertTo24HourFormat = (amPmFormatTime) => {
-  const [time, amOrPm] = amPmFormatTime.split(" ");
-  const [hours, minutes] = time.split(":");
-  if (amOrPm === "AM") {
-    if (hours === "12") {
-      return `00:${minutes}`;
+  if (typeof amPmFormatTime === "string" && amPmFormatTime.trim() !== "") {
+    const [time, amOrPm] = amPmFormatTime.split(" ");
+    const [hours, minutes] = time.split(":");
+    if (amOrPm === "AM") {
+      if (hours === "12") {
+        return `00:${minutes}`;
+      }
+      const convertedHours = hours < 10 ? `0${hours}` : hours;
+      return `${convertedHours}:${minutes}`;
     }
-    const convertedHours = hours < 10 ? `0${hours}` : hours;
-    return `${convertedHours}:${minutes}`;
-  }
-  if (amOrPm === "PM") {
-    if (hours === "12") {
-      return `12:${minutes}`;
+    if (amOrPm === "PM") {
+      if (hours === "12") {
+        return `12:${minutes}`;
+      }
+      return `${(parseInt(hours) + 12).toString()}:${minutes}`;
     }
-    return `${(parseInt(hours) + 12).toString()}:${minutes}`;
+  } else {
+    return;
   }
 };
 
 export const convertToFahrenheit = (cesliusTemp) => {
-  return (parseFloat(cesliusTemp) * 1.8 + 32).toFixed(1).toString();
+  if (typeof cesliusTemp === "string" && cesliusTemp.trim() !== "") {
+    const convertedTemp = (parseFloat(cesliusTemp) * 1.8 + 32)
+      .toFixed(1)
+      .toString();
+    const indexOfDot = convertedTemp.indexOf(".");
+    return convertedTemp.endsWith(".0")
+      ? convertedTemp.slice(0, indexOfDot)
+      : convertedTemp;
+  }
 };
 
 export const convertToCelsius = (fahrenheitTemp) => {
-  return parseFloat((fahrenheitTemp - 32) / 1.8).toFixed(1);
+  if (typeof fahrenheitTemp === "string" && fahrenheitTemp.trim() !== "") {
+    const convertedTemp = parseFloat((fahrenheitTemp - 32) / 1.8).toFixed(1);
+    const indexOfDot = convertedTemp.indexOf(".");
+    return convertedTemp.endsWith(".0")
+      ? convertedTemp.slice(0, indexOfDot)
+      : convertedTemp;
+  }
 };
 
 export const make14DaysForecastObject = ({ daily, hourly }) => {

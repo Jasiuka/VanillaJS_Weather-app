@@ -23,37 +23,39 @@ export const createAndDisplayAllData = async (
   const weatherData = await weatherDataObject;
   const timeData = await locationTimeObject;
 
+  const {
+    hourly: {
+      temperature_2m: todayTemperature,
+      time: timeArray,
+      weathercode: weatherCode,
+    },
+  } = weatherData;
+
   createMultipleDaysForecastElements(
     make14DaysForecastObject(weatherData),
     multipleForecastsBox,
     temperatureUnits
   );
 
-  const {
-    hourly: {
-      temperature_2m: currentTemperature,
-      time: timeArray,
-      weathercode: weatherCode,
-    },
-  } = weatherData;
   const { time: currentTime, date, sunset, sunrise } = timeData;
   let currentHour = currentTime.substring(0, 2);
   currentHour = currentHour.startsWith("0")
     ? currentHour.substring(1, 2)
     : currentHour;
-
+  const currentTemperature = todayTemperature[currentHour].toString();
   const screenWidth = window.innerWidth;
   const weatherObj = makeWeatherDescriptionAndBackground(
     weatherCode[currentHour],
     screenWidth
   );
   const todayWeatherData = {
-    temperatureArray: currentTemperature.slice(0, 24),
+    temperatureArray: todayTemperature.slice(0, 24),
     weatherCodeArray: weatherCode.slice(0, 24),
     dayTimeArray: timeArray.slice(0, 24),
   };
 
   // Change location text
+  // To handle long city names
   const mediaQuery = window.matchMedia("only screen and (max-width: 48.75rem)");
   if (mediaQuery.matches) {
     if (location.length > 27) {
@@ -83,14 +85,11 @@ export const createAndDisplayAllData = async (
   if (existingTempElement) {
     existingTempElement.textContent = changeTemperatureText(
       temperatureUnits,
-      currentTemperature[currentHour]
+      currentTemperature
     );
   } else {
     leftPanel.appendChild(
-      createTemperatureElement(
-        currentTemperature[currentHour],
-        temperatureUnits
-      )
+      createTemperatureElement(currentTemperature, temperatureUnits)
     );
   }
 
@@ -262,7 +261,7 @@ const createHourlyForecastListElements = (
     temperatureElement.textContent =
       temperatureUnits === "celsius"
         ? temperatureArray[i]
-        : convertToFahrenheit(temperatureArray[i]);
+        : convertToFahrenheit(temperatureArray[i].toString());
     newWeatherListItem.appendChild(hoursElement);
     newWeatherListItem.appendChild(iconElement);
     newWeatherListItem.appendChild(temperatureElement);
@@ -288,7 +287,7 @@ export const createMultipleDaysForecastElements = (
     const temperature =
       temperatureUnits === "celsius"
         ? value.midDayTemp
-        : convertToFahrenheit(value.midDayTemp);
+        : convertToFahrenheit(value.midDayTemp.toString());
     const description = value.midDayWeatherDescription.description;
     const icon = value.midDayWeatherIcon;
     const date = key;

@@ -89,5 +89,128 @@ describe("Helper functions tests", () => {
       expect(thirdOutput).toBe(undefined);
     });
   });
-  describe("convertToAmPm function tests", () => {});
+  describe("convertToAmPm function tests", () => {
+    test("Should return 11:45 AM, 12:00 PM, 06:00 PM", () => {
+      const mockTimeFirst = "11:45";
+      const mockTimeSecond = "12:00";
+      const mockTimeThird = "18:00";
+      const firstOutput = helperFunction.convertToAmPm(mockTimeFirst);
+      const secondOutput = helperFunction.convertToAmPm(mockTimeSecond);
+      const thirdOutput = helperFunction.convertToAmPm(mockTimeThird);
+      expect(firstOutput).toBe("11:45 AM");
+      expect(secondOutput).toBe("12:00 PM");
+      expect(thirdOutput).toBe("6:00 PM");
+    });
+    test("Should return nothing when empty/undefined/null/not string", () => {
+      const mockEmpty = "";
+      const mockNull = null;
+      const mockUndefined = undefined;
+      const mockNotString = 111;
+      const firstOutput = helperFunction.convertToAmPm(mockEmpty);
+      const secondOutput = helperFunction.convertToAmPm(mockNull);
+      const thirdOutput = helperFunction.convertToAmPm(mockUndefined);
+      const fourthOutput = helperFunction.convertToAmPm(mockNotString);
+
+      expect(firstOutput).toBe(undefined);
+      expect(secondOutput).toBe(undefined);
+      expect(thirdOutput).toBe(undefined);
+      expect(fourthOutput).toBe(undefined);
+    });
+  });
+  describe("convertTo24HourFormat function tests", () => {
+    test("Should return 11:45, 12:00, 18:00", () => {
+      const mockTimeFirst = "11:45 AM";
+      const mockTimeSecond = "12:00 PM";
+      const mockTimeThird = "6:00 PM";
+      const firstOutput = helperFunction.convertTo24HourFormat(mockTimeFirst);
+      const secondOutput = helperFunction.convertTo24HourFormat(mockTimeSecond);
+      const thirdOutput = helperFunction.convertTo24HourFormat(mockTimeThird);
+      expect(firstOutput).toBe("11:45");
+      expect(secondOutput).toBe("12:00");
+      expect(thirdOutput).toBe("18:00");
+    });
+    test("Should return nothing when empty/undefined/null/not string", () => {
+      const mockEmpty = "";
+      const mockNull = null;
+      const mockUndefined = undefined;
+      const mockNotString = 111;
+      const firstOutput = helperFunction.convertTo24HourFormat(mockEmpty);
+      const secondOutput = helperFunction.convertTo24HourFormat(mockNull);
+      const thirdOutput = helperFunction.convertTo24HourFormat(mockUndefined);
+      const fourthOutput = helperFunction.convertTo24HourFormat(mockNotString);
+
+      expect(firstOutput).toBe(undefined);
+      expect(secondOutput).toBe(undefined);
+      expect(thirdOutput).toBe(undefined);
+      expect(fourthOutput).toBe(undefined);
+    });
+  });
+  describe("convertToFahrenheit and convertToCelsius functions tests", () => {
+    test("convertToFahrenheit should return 73.4, 51.8, 32.0", () => {
+      const mockCelsiusTempFirst = "23";
+      const mockCelsiusTempSecond = "11";
+      const mockCelsiusTempThird = "0";
+      const firstOutput =
+        helperFunction.convertToFahrenheit(mockCelsiusTempFirst);
+      const secondOutput = helperFunction.convertToFahrenheit(
+        mockCelsiusTempSecond
+      );
+      const thirdOutput =
+        helperFunction.convertToFahrenheit(mockCelsiusTempThird);
+      expect(firstOutput).toBe("73.4");
+      expect(secondOutput).toBe("51.8");
+      expect(thirdOutput).toBe("32");
+    });
+    test("convertToFahrenheit should return undefined if empty/null/undefined/not a string given", () => {
+      const mockCelsiusTempFirst = undefined;
+      const mockCelsiusTempSecond = null;
+      const mockCelsiusTempThird = "    ";
+      const mockCelsiusTempFourth = 154;
+      const firstOutput =
+        helperFunction.convertToFahrenheit(mockCelsiusTempFirst);
+      const secondOutput = helperFunction.convertToFahrenheit(
+        mockCelsiusTempSecond
+      );
+      const thirdOutput =
+        helperFunction.convertToFahrenheit(mockCelsiusTempThird);
+      const fourthOutput = helperFunction.convertToFahrenheit(
+        mockCelsiusTempFourth
+      );
+      expect(firstOutput).toBe(undefined);
+      expect(secondOutput).toBe(undefined);
+      expect(thirdOutput).toBe(undefined);
+      expect(fourthOutput).toBe(undefined);
+    });
+    test("convertToCelsius should return 23, 11, 0", () => {
+      const mockCelsiusTempFirst = "73.4";
+      const mockCelsiusTempSecond = "51.8";
+      const mockCelsiusTempThird = "32.0";
+      const firstOutput = helperFunction.convertToCelsius(mockCelsiusTempFirst);
+      const secondOutput = helperFunction.convertToCelsius(
+        mockCelsiusTempSecond
+      );
+      const thirdOutput = helperFunction.convertToCelsius(mockCelsiusTempThird);
+      expect(firstOutput).toBe("23");
+      expect(secondOutput).toBe("11");
+      expect(thirdOutput).toBe("0");
+    });
+    test("convertToCelsius should return undefined if empty/null/undefined/not a string given", () => {
+      const mockCelsiusTempFirst = undefined;
+      const mockCelsiusTempSecond = null;
+      const mockCelsiusTempThird = "    ";
+      const mockCelsiusTempFourth = 154;
+      const firstOutput = helperFunction.convertToCelsius(mockCelsiusTempFirst);
+      const secondOutput = helperFunction.convertToCelsius(
+        mockCelsiusTempSecond
+      );
+      const thirdOutput = helperFunction.convertToCelsius(mockCelsiusTempThird);
+      const fourthOutput = helperFunction.convertToCelsius(
+        mockCelsiusTempFourth
+      );
+      expect(firstOutput).toBe(undefined);
+      expect(secondOutput).toBe(undefined);
+      expect(thirdOutput).toBe(undefined);
+      expect(fourthOutput).toBe(undefined);
+    });
+  });
 });
