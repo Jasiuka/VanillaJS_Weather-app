@@ -259,6 +259,13 @@ export const make14DaysForecastObject = ({ daily, hourly }) => {
 };
 
 export const changeBoxStyles = (firstWindow, displayWindow, refreshButton) => {
+  if (
+    !(firstWindow instanceof HTMLElement) ||
+    !(displayWindow instanceof HTMLElement) ||
+    !(refreshButton instanceof HTMLElement)
+  )
+    return;
+
   firstWindow.style.display = "none";
   displayWindow.style.display = "flex";
   refreshButton.style.display = "flex";
@@ -269,6 +276,7 @@ export const createSaveObject = (
   temperatureSettings,
   locationName
 ) => {
+  if (!hoursSettings || !temperatureSettings || !locationName) return;
   const newSaveObject = {
     hourFormat: hoursSettings,
     temperatureUnit: temperatureSettings,
@@ -278,6 +286,7 @@ export const createSaveObject = (
 };
 
 export const saveDataObject = (objectToSave) => {
+  if (!objectToSave || typeof objectToSave !== "object") return;
   localStorage.setItem("settings", JSON.stringify(objectToSave));
 };
 

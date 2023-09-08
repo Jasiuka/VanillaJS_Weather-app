@@ -213,4 +213,80 @@ describe("Helper functions tests", () => {
       expect(fourthOutput).toBe(undefined);
     });
   });
+  describe("changeBoxStyles function tests", () => {
+    test("Should elements display property changed to none,flex,flex ", () => {
+      const firstDiv = document.createElement("div");
+      const secondDiv = document.createElement("div");
+      const thirdDiv = document.createElement("div");
+
+      helperFunction.changeBoxStyles(firstDiv, secondDiv, thirdDiv);
+
+      expect(firstDiv.style.display).toBe("none");
+      expect(secondDiv.style.display).toBe("flex");
+      expect(thirdDiv.style.display).toBe("flex");
+    });
+    test("Should return undefined if at least 1 element is not given", () => {
+      const firstDiv = undefined;
+      const secondDiv = document.createElement("div");
+      const thirdDiv = 10;
+
+      helperFunction.changeBoxStyles(firstDiv, secondDiv, thirdDiv);
+      expect(secondDiv.style.display).not.toBe("flex");
+    });
+  });
+  describe("createSaveObject function tests", () => {
+    test("Should return correct object by given args", () => {
+      const mockHourFormat = "h24";
+      const mockTempUnit = "fahrenheit";
+      const mockLocation = "Vilnius";
+
+      const saveObject = helperFunction.createSaveObject(
+        mockHourFormat,
+        mockTempUnit,
+        mockLocation
+      );
+
+      expect(saveObject.hourFormat).toBe("h24");
+      expect(saveObject.temperatureUnit).toBe("fahrenheit");
+      expect(saveObject.location).toBe("Vilnius");
+    });
+    test("Should return undefined if at least one arg empty/null/undefined", () => {
+      const mockHourFormat = "h24";
+      let mockTempUnit;
+      const mockLocation = "Vilnius";
+
+      const saveObject = helperFunction.createSaveObject(
+        mockHourFormat,
+        mockTempUnit,
+        mockLocation
+      );
+      expect(saveObject).toBe(undefined);
+    });
+  });
+  describe("saveDataObject function tests", () => {
+    test("Should save object correctly", () => {
+      const mockedSaveObject = {
+        hourFormat: "h24",
+        temperatureUnit: "fahrenheit",
+        location: "Kaunas",
+      };
+      helperFunction.saveDataObject(mockedSaveObject);
+      const savedData = JSON.parse(localStorage.getItem("settings"));
+      expect(savedData.location).toBe("Kaunas");
+      expect(savedData.hourFormat).toBe("h24");
+      expect(savedData.temperatureUnit).toBe("fahrenheit");
+    });
+    test("Should return undefined if no data was given", () => {
+      const mockedSaveObject = null;
+      const mockedSaveObjectSecond = 10;
+
+      const firstOutput = helperFunction.saveDataObject(mockedSaveObject);
+      const secondOutput = helperFunction.saveDataObject(
+        mockedSaveObjectSecond
+      );
+
+      expect(firstOutput).toBe(undefined);
+      expect(secondOutput).toBe(undefined);
+    });
+  });
 });

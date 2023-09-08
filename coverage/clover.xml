@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1694107951288" clover="3.2.0">
-  <project timestamp="1694107951289" name="All files">
-    <metrics statements="166" coveredstatements="67" conditionals="149" coveredconditionals="48" methods="18" coveredmethods="8" elements="333" coveredelements="123" complexity="0" loc="166" ncloc="166" packages="1" files="1" classes="1"/>
+<coverage generated="1694182525539" clover="3.2.0">
+  <project timestamp="1694182525539" name="All files">
+    <metrics statements="170" coveredstatements="77" conditionals="163" coveredconditionals="62" methods="18" coveredmethods="11" elements="351" coveredelements="150" complexity="0" loc="170" ncloc="170" packages="1" files="1" classes="1"/>
     <file name="helper-functions.script.js" path="C:\Users\luksj\Desktop\Programavimas\projects\weathyy\VanillaJS_Weather-app\scripts\helper-functions.script.js">
-      <metrics statements="166" coveredstatements="67" conditionals="149" coveredconditionals="48" methods="18" coveredmethods="8"/>
+      <metrics statements="170" coveredstatements="77" conditionals="163" coveredconditionals="62" methods="18" coveredmethods="11"/>
       <line num="1" count="1" type="stmt"/>
       <line num="5" count="3" type="stmt"/>
       <line num="10" count="3" type="cond" truecount="2" falsecount="25"/>
@@ -126,50 +126,54 @@
       <line num="256" count="0" type="stmt"/>
       <line num="258" count="0" type="stmt"/>
       <line num="261" count="1" type="stmt"/>
-      <line num="262" count="0" type="stmt"/>
-      <line num="263" count="0" type="stmt"/>
-      <line num="264" count="0" type="stmt"/>
+      <line num="262" count="2" type="cond" truecount="2" falsecount="0"/>
       <line num="267" count="1" type="stmt"/>
-      <line num="272" count="0" type="stmt"/>
-      <line num="277" count="0" type="stmt"/>
+      <line num="269" count="1" type="stmt"/>
+      <line num="270" count="1" type="stmt"/>
+      <line num="271" count="1" type="stmt"/>
+      <line num="274" count="1" type="stmt"/>
+      <line num="279" count="2" type="cond" truecount="5" falsecount="0"/>
       <line num="280" count="1" type="stmt"/>
-      <line num="281" count="0" type="stmt"/>
-      <line num="284" count="1" type="stmt"/>
-      <line num="285" count="0" type="cond" truecount="0" falsecount="3"/>
-      <line num="287" count="0" type="stmt"/>
-      <line num="288" count="0" type="stmt"/>
-      <line num="289" count="0" type="stmt"/>
-      <line num="291" count="0" type="stmt"/>
-      <line num="292" count="0" type="stmt"/>
-      <line num="293" count="0" type="stmt"/>
-      <line num="295" count="0" type="stmt"/>
-      <line num="299" count="1" type="stmt"/>
-      <line num="300" count="0" type="cond" truecount="0" falsecount="3"/>
+      <line num="285" count="1" type="stmt"/>
+      <line num="288" count="1" type="stmt"/>
+      <line num="289" count="3" type="cond" truecount="4" falsecount="0"/>
+      <line num="290" count="1" type="stmt"/>
+      <line num="293" count="1" type="stmt"/>
+      <line num="294" count="0" type="cond" truecount="0" falsecount="3"/>
+      <line num="296" count="0" type="stmt"/>
+      <line num="297" count="0" type="stmt"/>
+      <line num="298" count="0" type="stmt"/>
+      <line num="300" count="0" type="stmt"/>
+      <line num="301" count="0" type="stmt"/>
       <line num="302" count="0" type="stmt"/>
-      <line num="303" count="0" type="stmt"/>
       <line num="304" count="0" type="stmt"/>
-      <line num="306" count="0" type="stmt"/>
-      <line num="307" count="0" type="stmt"/>
-      <line num="308" count="0" type="stmt"/>
-      <line num="310" count="0" type="stmt"/>
-      <line num="316" count="1" type="stmt"/>
-      <line num="321" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="322" count="0" type="stmt"/>
-      <line num="324" count="0" type="stmt"/>
-      <line num="326" count="0" type="stmt"/>
-      <line num="327" count="0" type="stmt"/>
-      <line num="328" count="0" type="stmt"/>
-      <line num="329" count="0" type="stmt"/>
-      <line num="330" count="0" type="stmt"/>
-      <line num="334" count="1" type="stmt"/>
+      <line num="308" count="1" type="stmt"/>
+      <line num="309" count="0" type="cond" truecount="0" falsecount="3"/>
+      <line num="311" count="0" type="stmt"/>
+      <line num="312" count="0" type="stmt"/>
+      <line num="313" count="0" type="stmt"/>
+      <line num="315" count="0" type="stmt"/>
+      <line num="316" count="0" type="stmt"/>
+      <line num="317" count="0" type="stmt"/>
+      <line num="319" count="0" type="stmt"/>
+      <line num="325" count="1" type="stmt"/>
+      <line num="330" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="331" count="0" type="stmt"/>
+      <line num="333" count="0" type="stmt"/>
+      <line num="335" count="0" type="stmt"/>
+      <line num="336" count="0" type="stmt"/>
+      <line num="337" count="0" type="stmt"/>
+      <line num="338" count="0" type="stmt"/>
       <line num="339" count="0" type="stmt"/>
-      <line num="342" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="343" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="344" count="0" type="stmt"/>
-      <line num="345" count="0" type="stmt"/>
-      <line num="347" count="0" type="stmt"/>
+      <line num="343" count="1" type="stmt"/>
       <line num="348" count="0" type="stmt"/>
-      <line num="351" count="0" type="stmt"/>
+      <line num="351" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="352" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="353" count="0" type="stmt"/>
+      <line num="354" count="0" type="stmt"/>
+      <line num="356" count="0" type="stmt"/>
+      <line num="357" count="0" type="stmt"/>
+      <line num="360" count="0" type="stmt"/>
     </file>
   </project>
 </coverage>
