@@ -1,7 +1,7 @@
 export const getCoordinatesAndLocationName = async (cityName) => {
   const proxyUrl = "https://corsproxy.io/?";
   const responseFromAPI = await fetch(
-    `${proxyUrl}https://geocode.maps.co/search?q={${cityName}}`
+    `${proxyUrl}https://geocode.maps.co/search?q={${cityName}}&api_key=661819a1c98d6422964285hvx981873`
   );
   const jsonData = await responseFromAPI.json();
   if (!jsonData) {
